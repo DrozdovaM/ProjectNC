@@ -1,0 +1,64 @@
+input.ng-touched.ng-invalid {
+    border: 2px solid rgb(252, 140, 120) ;
+}
+
+input.ng-touched.ng-valid {
+    border: 2px solid rgb(45, 150, 45);
+}
+
+.flexGroup {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40px;
+    text-align: center;
+    border: 1px solid black;
+}
+.form-control {
+    text-align: center;
+}
+
+.popup {
+    position: absolute;
+    width:260px;
+    background: white;
+    border: 6px double rgb(161, 161, 161);
+    border-radius: 4px;
+    padding: 24px;
+    top: 15%;
+    left: 35%;
+    text-align: center;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-shadow: 0px 0px 10px #000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-shadow {
+    position: fixed;
+    width: 100%;
+    min-height:100%;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.shadow {
+    position: absolute;
+    z-index: 15;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background: grey;
+    opacity: 0.5;
+}
+
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #2c3e50;
+}

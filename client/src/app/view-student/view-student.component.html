@@ -1,0 +1,13 @@
+<div class="FlexParents">
+  <div class="flexContainer"> 
+    <div class="component"><b>Номер:</b> {{id}}</div> 
+    <div class="component"><b>Фамилия:</b> {{student.lastName | titlecase}} ({{student.lastName | translite | titlecase}})</div>
+    <div class="component"><b>Имя:</b> {{student.firstName  | titlecase}} ({{student.firstName | translite | titlecase}})</div>
+    <div class="component"><b>Отчество:</b> {{student.patronymic | titlecase}} ({{student.patronymic | translite | titlecase}})</div>
+    <div class="component"><b>Дата рождения:</b> {{student.birthDay | date}}</div>
+    <div class="component"><b>Возраст:</b> {{student.birthDay | birthday}}</div>
+    <div class="component"><b>Средний балл:</b> {{student.gpa | number: '1.0-1'}}</div>
+  <button routerLink="" class="buttonHome"></button>
+  </div>
+</div>
+

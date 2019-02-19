@@ -1,0 +1,65 @@
+<router-outlet></router-outlet>
+
+<h1>Список студентов</h1>
+
+<div class="FlexParents">
+ 
+
+  <div class="flexContainer">
+    <div appButtonOnOff><b>Отл/Вкл выделение неуспевающих студентов:</b></div>
+    <button class="onOff" (click)="toggleCheckAssessment()">Отключить/Включить </button>
+    <div><b>Поиск студента по Имени и/или Фамилии:</b></div>
+    <input [(ngModel)]="fullName" class="search" type="text" placeholder="Поиск студента">
+    <div><b>Фильтрация по дню рождения:</b></div>
+    <input [(ngModel)]="dataInput" class="calendar" type="date" >
+    <div><b>Фильтрация по среднему баллу:</b></div>
+    <input [(ngModel)]="Gpa" class="gpa" type="text" placeholder="Введите средний балл:">
+    <button class="onOff" (click)="_toggleCreateStudent()" routerLink="/form/create" >Добавить студента</button>
+  </div>
+  
+    <table class="flexy">
+      <thead>
+        <tr class="tableParamsColor"><th style="border-left: 2px solid rgb(161, 161, 161);">№:</th><th>Фамилия:<button class="sort" (click)="sortSurName()"></button></th>
+          <th>Имя:<button class="sort" (click)="sortName()"></button></th><th>Отчество:<button class="sort" (click)="sortPatr()"></button></th>
+          <th>Дата рождения:<button class="sort" (click)="sortBirh()"></button></th><th>Возраст:</th><th>С/б:
+            <button class="sort" (click)="sortAssessment()"></button></th><th></th><th></th></tr>
+      </thead>
+
+      <tbody id="style-15">
+        <tr class="width-tr" *ngFor="let student of students; let i = index" 
+        [ngClass]="{'badGpa': CheckAssessment(student.gpa), 'foundName': searchFullName(i), 'hideStudents': filtrateBirthday(i),
+        'hideStudent': filtrateGpa(i), 'gray': !CheckAssessment(student.gpa) && !searchFullName(i) && !filtrateBirthday(i) && !filtrateGpa(i) && i%2===0}" appHighlightStudent [appEditSize]="'20px'" [defaultSize]="'14px'" >
+          <td class ="border"><b>{{i + 1}}</b></td>
+          <td><button [routerLink]="['view', student._id]">{{student.lastName | titlecase | reductionFullname}}<br>
+          <div class="transliteFullName" appTranslite >{{student.lastName | translite | titlecase | reductionFullname}}</div></button></td>
+          <td><button  [routerLink]="['view', student._id]">{{student.firstName | titlecase | reductionFullname}}<br>
+            <div class="transliteFullName" appTranslite>{{student.firstName | translite | titlecase | reductionFullname}}</div></button></td>
+          <td><button [routerLink]="['view', student._id]" >{{student.patronymic | titlecase | reductionFullname}}<br>
+            <div appTranslite>{{student.patronymic | translite | titlecase | reductionFullname}}</div></button></td>
+          <td><button  [routerLink]="['view', student._id]">{{student.birthDay | date}}</button></td>
+          <td><button  [routerLink]="['view', student._id]">{{student.birthDay | birthday}}</button></td>
+          <td><button  [routerLink]="['view', student._id]">{{student.gpa | number: '1.0-1'}}</button></td>
+          <td><button  class="deleteStudents" (click)="deleteStudent(student); _checkShadow()"></button></td>
+          <td><button  class="editStudents" (click)="_editStudent(student)" [routerLink]="['/form/edit', student._id]" ></button></td>
+        </tr>
+      </tbody>
+      
+    </table>
+</div>
+
+
+<div [ngClass]="{'shadow-delete':checkShadow}"></div>
+<div class="popup" *ngIf="CheckDelete"><p><b>Вы уверены, что хотите удалить информацию об ученике?</b></p>
+  <div class="containerDel">
+    <button (click)="_checkShadow()" [appDeleteStudent]="'Вы точно уверены?'" [function] = "deleteStudent(remoteStudent)" [disabled]="Delete === 'true'"
+    class="delete"(click)="Delete = true; deleteStudent(remoteStudent);">Да</button>
+    <button class="delete"(click)="Delete = false; deleteStudent(remoteStudent); _checkShadow()">Нет</button>
+  </div>
+</div>
+
+
+
+
+
+
+

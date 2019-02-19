@@ -1,0 +1,78 @@
+<div class="shadow"></div>
+
+<div class="popup-shadow">
+  <form [formGroup]="studentFullInfo" novalidate (ngSubmit)="onSubmit()">
+    <div class="popup">
+      <div сlass="flexGroup">
+
+        <div formGroupName="fullName" class="fullName">
+          
+          <div class="form-control">
+            <p>
+              Фамилия:
+            </p>
+            <input id="lastName" name="lastName" type="text" formControlName="lastName" (input)="newStudent.lastName=$event.target.value"[value]="newStudent.lastName || ''" >
+          </div>
+
+
+              
+          <div class="form-control">
+            <p>
+              Имя:
+            </p>
+            <input id="firstName" name="firstName" type="text" formControlName="firstName" (input)="newStudent.firstName=$event.target.value"[value]="newStudent.firstName || ''">
+          </div>
+        
+          <div class="form-control">
+          <p>
+            Отчество:
+          </p>
+          <input id="patronymic" name="patronymic" type="text" formControlName="patronymic" (input)="newStudent.patronymic=$event.target.value"[value]="newStudent.patronymic || ''">
+          </div>
+          
+        </div>
+
+        <div class="form-control">
+          <p>
+            Дата рождения:
+          </p>
+          <input id="birthDay" name="birthDay" type="date" formControlName="birthDay" (input)="newStudent.birthDay=$event.target.value"[value]="newStudent.birthDay || ''">
+      
+          <!-- <div *ngIf="studentFullInfo.get(birthDay).errors &&
+          studentFullInfo.get(birthDay).dirty &&
+          studentFullInfo.get(birthDay).errors.birtdayValidation">
+            ошибка
+          </div> -->
+
+        </div>
+
+        <div class="form-control">
+          <p>
+            Средний балл:
+          </p>
+            <input id="gpa" name="gpa" type="text" formControlName="gpa" (input)="newStudent.gpa=$event.target.value"[value]="newStudent.gpa || ''">
+
+            <!-- <div *ngIf="gpa.invalid && (gpa.dirty || gpa.touched)">
+
+                Не работает!
+
+              <div *ngIf="gpa.errors.required">
+                средний балл is required.
+              </div>
+
+              <div *ngIf="gpa.errors.pattern">
+                Не работает.
+              </div>s
+          </div> -->
+        </div>
+          
+        <h4></h4>
+        
+        <button type="submit" [disabled]="!studentFullInfo.valid">Добавить</button>
+        <button type="reset" (click)="_exit()">Отмена</button>
+
+      </div>
+    </div>
+  </form>
+</div>
+

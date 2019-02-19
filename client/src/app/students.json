@@ -1,0 +1,16 @@
+{   "students": 
+    [
+        {"lastName": "Дроздова", "firstName": "Мария", "patronymic": "Максимовна",
+            "birthDay": "1995-03-17" , "gpa": 2.8},
+            {"lastName": "Кудряшов", "firstName": "Илья", "patronymic": "Васильевич",
+            "birthDay": "1996-07-15", "gpa": 4.8},
+            {"lastName": "Юдин", "firstName": "Павел", "patronymic": "Викторович",
+            "birthDay": "1998-06-22", "gpa": 5.0},
+            {"lastName": "Широков", "firstName": "Илья", "patronymic": "Сергеевич",
+            "birthDay": "1999-02-18", "gpa": 4.5},
+            {"lastName": "Нагинайло", "firstName": "Дмитрий", "patronymic": "Александрович",
+            "birthDay": "1997-11-30", "gpa": 3.0},
+            {"lastName": "Полякова", "firstName": "Ирина", "patronymic": "Олеговна",
+            "birthDay": "2000-06-10", "gpa": 3.5}
+    ]
+}
