@@ -120,7 +120,6 @@ var AppComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
-            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].OnPush,
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         })
     ], AppComponent);
@@ -218,6 +217,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var DeleteStudentDirective = /** @class */ (function () {
     function DeleteStudentDirective() {
+        // Директива для подтверждения удаления студента
         this.message = 'Вы точно уверены?';
     }
     DeleteStudentDirective.prototype.confirm = function () {
@@ -321,9 +321,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var EditSizeDirective = /** @class */ (function () {
     function EditSizeDirective() {
-        // clicks = 0;
-        this.editSize = '20px';
-        this.defaultSize = '16px';
+        this.defaultSize = '20px';
     }
     EditSizeDirective.prototype.ngOnInit = function () {
         this.fontSize = this.defaultSize;
@@ -337,10 +335,6 @@ var EditSizeDirective = /** @class */ (function () {
     });
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('appEditSize'),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], EditSizeDirective.prototype, "editSize", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], EditSizeDirective.prototype, "defaultSize", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -377,6 +371,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var HighlightStudentDirective = /** @class */ (function () {
     function HighlightStudentDirective() {
+        // Директива для изменения цвета и типа шрифта при наведении курсора
         this.color = 'black';
         this.fontWeight = 'normal';
     }
@@ -456,9 +451,7 @@ var TransliteDirective = /** @class */ (function () {
         this.element = element;
         this.renderer = renderer;
     }
-    // @HostBinding('style.display') get getDisplay() {
-    //   return this.display;
-    // }
+    // При наведении курсора, элемент становится непрозрачным
     TransliteDirective.prototype.onMouseLeave = function () {
         this.setDisplay('0');
     };
@@ -576,7 +569,7 @@ module.exports = "input.ng-touched.ng-invalid {\r\n    border: 2px solid rgb(252
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"shadow\"></div>\n\n<div class=\"popup-shadow\">\n  <form [formGroup]=\"studentFullInfo\" novalidate (ngSubmit)=\"onSubmit()\">\n    <div class=\"popup\">\n      <div сlass=\"flexGroup\">\n\n        <div formGroupName=\"fullName\" class=\"fullName\">\n          \n          <div class=\"form-control\">\n            <p>\n              Фамилия:\n            </p>\n            <input id=\"lastName\" name=\"lastName\" type=\"text\" formControlName=\"lastName\" (input)=\"newStudent.lastName=$event.target.value\"[value]=\"newStudent.lastName || ''\" >\n          </div>\n\n\n              \n          <div class=\"form-control\">\n            <p>\n              Имя:\n            </p>\n            <input id=\"firstName\" name=\"firstName\" type=\"text\" formControlName=\"firstName\" (input)=\"newStudent.firstName=$event.target.value\"[value]=\"newStudent.firstName || ''\">\n          </div>\n        \n          <div class=\"form-control\">\n          <p>\n            Отчество:\n          </p>\n          <input id=\"patronymic\" name=\"patronymic\" type=\"text\" formControlName=\"patronymic\" (input)=\"newStudent.patronymic=$event.target.value\"[value]=\"newStudent.patronymic || ''\">\n          </div>\n          \n        </div>\n\n        <div class=\"form-control\">\n          <p>\n            Дата рождения:\n          </p>\n          <input id=\"birthDay\" name=\"birthDay\" type=\"date\" formControlName=\"birthDay\" (input)=\"newStudent.birthDay=$event.target.value\"[value]=\"newStudent.birthDay || ''\">\n      \n          <!-- <div *ngIf=\"studentFullInfo.get(birthDay).errors &&\n          studentFullInfo.get(birthDay).dirty &&\n          studentFullInfo.get(birthDay).errors.birtdayValidation\">\n            ошибка\n          </div> -->\n\n        </div>\n\n        <div class=\"form-control\">\n          <p>\n            Средний балл:\n          </p>\n            <input id=\"gpa\" name=\"gpa\" type=\"text\" formControlName=\"gpa\" (input)=\"newStudent.gpa=$event.target.value\"[value]=\"newStudent.gpa || ''\">\n\n            <!-- <div *ngIf=\"gpa.invalid && (gpa.dirty || gpa.touched)\">\n\n                Не работает!\n\n              <div *ngIf=\"gpa.errors.required\">\n                средний балл is required.\n              </div>\n\n              <div *ngIf=\"gpa.errors.pattern\">\n                Не работает.\n              </div>s\n          </div> -->\n        </div>\n          \n        <h4></h4>\n        \n        <button type=\"submit\" [disabled]=\"!studentFullInfo.valid\">Добавить</button>\n        <button type=\"reset\" (click)=\"_exit()\">Отмена</button>\n\n      </div>\n    </div>\n  </form>\n</div>\n\n"
+module.exports = "<div class=\"shadow\"></div>\n\n<div class=\"popup-shadow\">\n  <form [formGroup]=\"studentFullInfo\" novalidate (ngSubmit)=\"onSubmit()\">\n    <div class=\"popup\">\n      <div сlass=\"flexGroup\">\n\n        <div formGroupName=\"fullName\" class=\"fullName\">\n          \n          <div class=\"form-control\">\n            <p>\n              Фамилия:\n            </p>\n            <input id=\"lastName\" name=\"lastName\" type=\"text\" formControlName=\"lastName\" \n            (input)=\"newStudent.lastName=$event.target.value\"[value]=\"newStudent.lastName || ''\" >\n          </div>\n\n\n              \n          <div class=\"form-control\">\n            <p>\n              Имя:\n            </p>\n            <input id=\"firstName\" name=\"firstName\" type=\"text\" formControlName=\"firstName\"\n            (input)=\"newStudent.firstName=$event.target.value\"[value]=\"newStudent.firstName || ''\">\n          </div>\n        \n          <div class=\"form-control\">\n          <p>\n            Отчество:\n          </p>\n          <input id=\"patronymic\" name=\"patronymic\" type=\"text\" formControlName=\"patronymic\" \n          (input)=\"newStudent.patronymic=$event.target.value\"[value]=\"newStudent.patronymic || ''\">\n          </div>\n          \n        </div>\n\n        <div class=\"form-control\">\n          <p>\n            Дата рождения:\n          </p>\n          <input id=\"birthDay\" name=\"birthDay\" type=\"date\" formControlName=\"birthDay\" \n          (input)=\"newStudent.birthDay=$event.target.value\"[value]=\"newStudent.birthDay || ''\">\n      \n          <!-- <div *ngIf=\"studentFullInfo.get(birthDay).errors &&\n          studentFullInfo.get(birthDay).dirty &&\n          studentFullInfo.get(birthDay).errors.birtdayValidation\">\n            ошибка\n          </div> -->\n\n        </div>\n\n        <div class=\"form-control\">\n          <p>\n            Средний балл:\n          </p>\n            <input id=\"gpa\" name=\"gpa\" type=\"text\" formControlName=\"gpa\" \n            (input)=\"newStudent.gpa=$event.target.value\"[value]=\"newStudent.gpa || ''\">\n\n            <!-- <div *ngIf=\"gpa.invalid && (gpa.dirty || gpa.touched)\">\n\n                Не работает!\n\n              <div *ngIf=\"gpa.errors.required\">\n                средний балл is required.\n              </div>\n\n              <div *ngIf=\"gpa.errors.pattern\">\n                Не работает.\n              </div>s\n          </div> -->\n        </div>\n          \n        <h4></h4>\n        \n        <button type=\"submit\" [disabled]=\"!studentFullInfo.valid\">Добавить</button>\n        <button type=\"reset\" (click)=\"_exit()\">Отмена</button>\n\n      </div>\n    </div>\n  </form>\n</div>\n\n"
 
 /***/ }),
 
@@ -610,7 +603,6 @@ var CreateComponent = /** @class */ (function () {
         this.addStudentService = addStudentService;
         this.router = router;
         this.newStudent = new _Students__WEBPACK_IMPORTED_MODULE_3__["Students"]();
-        this.submitted = false;
         this.studentFullInfo = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             fullName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
                 lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
@@ -666,7 +658,6 @@ var CreateComponent = /** @class */ (function () {
         this.router.navigate(['']);
     };
     CreateComponent.prototype.onSubmit = function () {
-        console.log(this.studentService.updateStudents);
         this.addStudent(this.newStudent);
         this.getStudents();
         this.router.navigate(['']);
@@ -783,7 +774,7 @@ module.exports = "input.ng-touched.ng-invalid {\r\n    border: 2px solid rgb(252
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"shadow\"></div>\n\n<div class=\"popup-shadow\">\n  <form [formGroup]=\"studentFullInfo\" novalidate (ngSubmit)=\"onSubmit()\">\n      <div class=\"popup\">\n        <div сlass=\"flexGroup\">\n\n          <div formGroupName=\"fullName\" class=\"fullName\">\n            \n            <div class=\"form-control\">\n              <p>\n                Фамилия:\n              </p>\n              <input id=\"lastName\" name=\"lastName\" type=\"text\" formControlName=\"lastName\" (input)=\"editStudent.lastName=$event.target.value\"[value]=\"editStudent.lastName || ''\" required  >\n              <!-- <span *ngIf=\"lastName.invalid && lastName.errors.required\">\n                фамилия is required.\n              </span>\n              <span *ngIf=\"lastName.invalid && lastName.errors.checkFullName\">\n                ошибка.\n              </span> -->\n            </div>\n                \n            <div class=\"form-control\">\n              <p>\n                Имя:\n              </p>\n              <input id=\"firstName\" name=\"firstName\" type=\"text\" formControlName=\"firstName\" (input)=\"editStudent.firstName=$event.target.value\"[value]=\"editStudent.firstName || ''\">\n            </div>\n          \n            <div class=\"form-control\">\n            <p>\n              Отчество:\n            </p>\n            <input id=\"patronymic\" name=\"patronymic\" type=\"text\" formControlName=\"patronymic\" (input)=\"editStudent.patronymic=$event.target.value\"[value]=\"editStudent.patronymic || ''\">\n            </div>\n            \n          </div>\n    \n          <div class=\"form-control\">\n            <p>\n              Дата рождения:\n            </p>\n            <input id=\"birthDay\" name=\"birthDay\" type=\"date\" formControlName=\"birthDay\" (input)=\"editStudent.birthDay=$event.target.value\"[value]=\"editStudent.birthDay || ''\">\n            \n          </div>\n    \n          <div class=\"form-control\">\n            <p>\n              Средний балл:\n            </p>\n              <input id=\"gpa\" name=\"gpa\" type=\"text\" formControlName=\"gpa\" (input)=\"editStudent.gpa=$event.target.value\"[value]=\"editStudent.gpa || ''\">\n\n              <!-- <div *ngIf=\"editStudent.gpa.invalid && (editStudent.gpa.dirty || editStudent.gpa.touched)\">\n\n                Не работает!\n\n                <div *ngIf=\"editStudent.gpa.errors.required\">\n                  средний балл is required.\n                </div>\n\n                <div *ngIf=\"editStudent.gpa.errors.pattern\">\n                  Не работает.\n                </div>\n\n              </div> -->\n          </div>\n    \n          <h4></h4>\n          \n          <button type=\"submit\" [disabled]=\"!studentFullInfo.valid\">Редактировать</button>\n          <button type=\"reset\" (click)=\"_exit()\">Отмена</button>\n    \n        </div>\n      </div>\n    </form>\n    </div>"
+module.exports = "<div class=\"shadow\"></div>\n\n<div class=\"popup-shadow\">\n  <form [formGroup]=\"studentFullInfo\" novalidate (ngSubmit)=\"onSubmit()\">\n      <div class=\"popup\">\n        <div сlass=\"flexGroup\">\n\n          <div formGroupName=\"fullName\" class=\"fullName\">\n            \n            <div class=\"form-control\">\n              <p>\n                Фамилия:\n              </p>\n              <input id=\"lastName\" name=\"lastName\" type=\"text\" formControlName=\"lastName\" \n              (input)=\"editStudent.lastName=$event.target.value\"[value]=\"editStudent.lastName || ''\" required  >\n              <!-- <span *ngIf=\"lastName.invalid && lastName.errors.required\">\n                фамилия is required.\n              </span>\n              <span *ngIf=\"lastName.invalid && lastName.errors.checkFullName\">\n                ошибка.\n              </span> -->\n            </div>\n                \n            <div class=\"form-control\">\n              <p>\n                Имя:\n              </p>\n              <input id=\"firstName\" name=\"firstName\" type=\"text\" formControlName=\"firstName\" \n              (input)=\"editStudent.firstName=$event.target.value\"[value]=\"editStudent.firstName || ''\">\n            </div>\n          \n            <div class=\"form-control\">\n            <p>\n              Отчество:\n            </p>\n            <input id=\"patronymic\" name=\"patronymic\" type=\"text\" formControlName=\"patronymic\" \n            (input)=\"editStudent.patronymic=$event.target.value\"[value]=\"editStudent.patronymic || ''\">\n            </div>\n            \n          </div>\n    \n          <div class=\"form-control\">\n            <p>\n              Дата рождения:\n            </p>\n            <input id=\"birthDay\" name=\"birthDay\" type=\"date\" formControlName=\"birthDay\" \n            (input)=\"editStudent.birthDay=$event.target.value\"[value]=\"editStudent.birthDay || ''\">\n            \n          </div>\n    \n          <div class=\"form-control\">\n            <p>\n              Средний балл:\n            </p>\n              <input id=\"gpa\" name=\"gpa\" type=\"text\" formControlName=\"gpa\" \n              (input)=\"editStudent.gpa=$event.target.value\"[value]=\"editStudent.gpa || ''\">\n\n              <!-- <div *ngIf=\"editStudent.gpa.invalid && (editStudent.gpa.dirty || editStudent.gpa.touched)\">\n\n                Не работает!\n\n                <div *ngIf=\"editStudent.gpa.errors.required\">\n                  средний балл is required.\n                </div>\n\n                <div *ngIf=\"editStudent.gpa.errors.pattern\">\n                  Не работает.\n                </div>\n\n              </div> -->\n          </div>\n    \n          <h4></h4>\n          \n          <button type=\"submit\" [disabled]=\"!studentFullInfo.valid\">Редактировать</button>\n          <button type=\"reset\" (click)=\"_exit()\">Отмена</button>\n    \n        </div>\n      </div>\n    </form>\n    </div>"
 
 /***/ }),
 
@@ -828,24 +819,23 @@ var EditComponent = /** @class */ (function () {
         this.editStudent = new _Students__WEBPACK_IMPORTED_MODULE_3__["Students"]();
         this.studentFullInfo = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             fullName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
-                lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.editStudent.lastName, [
+                lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
                     _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^[А-Яа-яЁё\s]+$'),
                 ]),
-                firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.editStudent.firstName, [
+                firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
                     _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^[А-Яа-яЁё\s]+$')
                 ]),
-                patronymic: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.editStudent.patronymic, [
+                patronymic: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
                     _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^[А-Яа-яЁё\s]+$'),
                 ])
             }, { validators: this.checkFullName }),
-            birthDay: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.editStudent.birthDay, [
+            birthDay: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, this.birtdayValidation
             ]),
-            gpa: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.editStudent.gpa, [
+            gpa: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^[1-5]*[.,]?[0-9]+$')
             ])
         });
-        this.toggleEditForm = true;
         this.subscription = this.activateRoute.params.subscribe(function (params) { return _this.id = params['id']; });
     }
     EditComponent.prototype.checkFullName = function (control) {
@@ -870,10 +860,10 @@ var EditComponent = /** @class */ (function () {
     };
     EditComponent.prototype.onSubmit = function () {
         this._editStudent(this.editStudent);
-        console.log(this.studentService.id);
-        // this.updateStudentForm(this.id - 1);
+        this.getStudents();
         this.router.navigate(['']);
     };
+    // Отображение в форме, редактируемого студента
     EditComponent.prototype.editForm = function (id) {
         var _this = this;
         this.infoAboutStudentService.infoAboutStudent(id).subscribe(function (student) {
@@ -881,10 +871,7 @@ var EditComponent = /** @class */ (function () {
             console.log(_this.editStudent);
         });
     };
-    EditComponent.prototype.updateStudentForm = function (i) {
-        this.studentService.student[i] = this.editStudent;
-        return this.studentService.student;
-    };
+    // Редактирование студента
     EditComponent.prototype._editStudent = function (student) {
         var _this = this;
         this.editStudentService.editStudent(student).subscribe(function () {
@@ -899,7 +886,7 @@ var EditComponent = /** @class */ (function () {
         });
     };
     EditComponent.prototype.ngOnInit = function () {
-        console.log(this.id);
+        // console.log(this.id);
         this.editForm(this.id);
     };
     EditComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1027,13 +1014,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var StudentService = /** @class */ (function () {
-    // addStudent(students: Students) {
-    //   this.student.push(students);
-    // }
-    // toggleCreateStudent(): boolean {
-    //   this.createStudentButton = !this.createStudentButton;
-    //   return this.createStudentButton;
-    // }
     function StudentService(addStudentService) {
         this.addStudentService = addStudentService;
         this.checkEditForm = false;
@@ -1048,10 +1028,6 @@ var StudentService = /** @class */ (function () {
         });
         console.log(this.student);
         return this.student;
-    };
-    StudentService.prototype.checkUpdateStudents = function () {
-        this.updateStudents = 1;
-        return this.updateStudents;
     };
     StudentService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1139,7 +1115,8 @@ __webpack_require__.r(__webpack_exports__);
 var BirthdayPipe = /** @class */ (function () {
     function BirthdayPipe() {
     }
-    BirthdayPipe.prototype.transform = function (value, args) {
+    BirthdayPipe.prototype.transform = function (value) {
+        // Подсчет возраста.
         var today = new Date();
         var birthDay = new Date(value);
         var diff = today - birthDay;
@@ -1217,6 +1194,7 @@ var ReductionFullnamePipe = /** @class */ (function () {
     function ReductionFullnamePipe() {
     }
     ReductionFullnamePipe.prototype.transform = function (value) {
+        // Проверка на кол-во символов в слове, если 11 и больше,  то добавляется ...
         var arr = value.split('');
         if (arr.length >= 11) {
             arr.splice(10, arr.length - 10);
@@ -1256,6 +1234,7 @@ var TranslitePipe = /** @class */ (function () {
     function TranslitePipe() {
     }
     TranslitePipe.prototype.transform = function (value) {
+        // Преобразование русского слова в английское
         var arr = value.split('');
         for (var i = 0; i <= arr.length; i++) {
             switch (arr[i]) {
@@ -1381,7 +1360,7 @@ var TranslitePipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\nh1 {\r\n    text-align: center;\r\n    margin: 50px;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\r\n}\r\n\r\na {\r\n    text-decoration: none;\r\n    color: black;\r\n}\r\n\r\n.border {\r\n    border-left: 2px solid rgb(161, 161, 161);\r\n}\r\n\r\n.FlexParents{\r\n    display: flex;\r\n    margin: 0 auto;\r\n    justify-content: space-around; \r\n\r\n}\r\n\r\n.flexContainer {\r\n    \r\n    margin: 0px;\r\n    align-self: flex-start;\r\n    flex-direction: column;\r\n    flex: 0 4 120px;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\r\n\r\n}\r\n\r\n.onOff {\r\n    background: rgb(221, 235, 248);\r\n    border-radius: 4px;\r\n    color: rgb(161, 161, 161);\r\n    cursor: pointer;\r\n    text-align: center;\r\n    margin: 15px;\r\n    padding: 10px;\r\n\r\n}\r\n\r\n.calendar {\r\n    color: rgb(161, 161, 161);\r\n    border: none;\r\n    outline: none;\r\n    border-radius: 4px;\r\n    height: 35px;\r\n    background: rgb(221, 235, 248);\r\n    padding-left: 20px;\r\n    position: relative;\r\n    margin: 15px;\r\n\r\n}\r\n\r\n.sort:before {\r\n    content: \"\\2193\";\r\n}\r\n\r\n.sort {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\n.tableParamsColor{\r\n\r\n    background: rgb(221, 235, 248);\r\n    /* position: absolute; */ \r\n}\r\n\r\n.flexy {\r\n    \r\n    max-width: 100%;\r\n    border: 1px solid #eee;\r\n    max-height: 400px;\r\n    \r\n    \r\n}\r\n\r\n#style-15::-webkit-scrollbar-track\r\n{\r\n\tbackground-color: #F5F5F5;\r\n\tborder-radius: 10px;\r\n}\r\n\r\n#style-15::-webkit-scrollbar-track:hover {\r\n    background-color: rgb(215, 218, 219);\r\n}\r\n\r\n#style-15::-webkit-scrollbar\r\n{\r\n\twidth: 10px;\r\n\tbackground-color: #F5F5F5;\r\n}\r\n\r\n#style-15::-webkit-scrollbar-thumb\r\n{\r\n\tborder-radius: 10px;\r\n\tbackground-color: #FFF;\r\n\tbackground-image: -webkit-gradient(linear,\r\n\t\t\t\t\t\t\t\t\t   40% 0%,\r\n\t\t\t\t\t\t\t\t\t   75% 84%,\r\n\t\t\t\t\t\t\t\t\t   from(rgb(161, 161, 161)),\r\n\t\t\t\t\t\t\t\t\t   to(rgb(146, 152, 156)),\r\n\t\t\t\t\t\t\t\t\t   color-stop(.6,rgb(199, 206, 212)));\r\n}\r\n\r\n.width-tr {\r\n    width: 400px;\r\n}\r\n\r\ntable tbody, table thead\r\n{\r\n    display: block;\r\n    width: 100%;\r\n}\r\n\r\ntable tbody \r\n{\r\n   overflow: auto;\r\n   max-height: 400px;\r\n   width: 100%;\r\n}\r\n\r\ntd button {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\nth {\r\n    margin: 0px;\r\n    padding: 10px;\r\n    border-right: 2px solid rgb(161, 161, 161);\r\n    border-bottom: 2px solid rgb(161, 161, 161);\r\n    border-top: 2px solid rgb(161, 161, 161);\r\n    text-align: center;\r\n    \r\n}\r\n\r\ntd {\r\n    margin: 0px;\r\n    padding: 10px;\r\n    border-right: 2px solid rgb(161, 161, 161);\r\n    border-bottom: 2px solid rgb(161, 161, 161);\r\n    text-align: center;\r\n}\r\n\r\ntable { \r\n    \r\n    border-radius: 10px;\r\n    border-spacing: 0px;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; \r\n    /* table-layout: fixed;  */\r\n    \r\n}\r\n\r\ntable th:nth-child(1), td:nth-child(1) { min-width: 40px;  max-width: 40px; }\r\n\r\ntable th:nth-child(2), td:nth-child(2) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(3), td:nth-child(3) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(4), td:nth-child(4) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(5), td:nth-child(5) { min-width: 100px;  max-width: 100px; }\r\n\r\ntable th:nth-child(6), td:nth-child(6) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(7), td:nth-child(7) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(8), td:nth-child(8) { min-width: 40px; max-width: 40px; }\r\n\r\ntable th:nth-child(9), td:nth-child(9) { min-width: 40px; max-width: 40px; }\r\n\r\n.table {\r\n    flex: 0 1 985px;\r\n    align-items: center;\r\n}\r\n\r\n.borders {\r\n    border-left: 2px solid rgb(161, 161, 161);\r\n}\r\n\r\n.search {\r\n    color: rgb(161, 161, 161);\r\n    border: none;\r\n    outline: none;\r\n    border-radius: 4px;\r\n    height: 35px;\r\n    background: rgb(221, 235, 248);\r\n    padding-left: 20px;\r\n    position: relative;\r\n    margin: 15px;\r\n\r\n\r\n}\r\n\r\n.popup {\r\n    position: absolute;\r\n    width: 300px;\r\n    background: white;\r\n    border: 6px double rgb(161, 161, 161);\r\n    border-radius: 4px;\r\n    padding: 24px;\r\n    top: 25%;\r\n    left: 35%;\r\n    text-align: center;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\r\n    z-index: 20;\r\n}\r\n\r\n.delete {\r\n    padding: 8px;\r\n    width: 80px;\r\n    background: rgb(161, 161, 161);\r\n    border-radius: 4px;\r\n    color: white;\r\n    cursor: pointer;\r\n    text-align: center;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", \"Roboto\", Helvetica, Arial, sans-serif;\r\n    margin-right: 20px;\r\n    margin-right: 20px;\r\n}\r\n\r\n.deleteStudents {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\n.deleteStudents:before{\r\n    content: \"\\2718\";\r\n}\r\n\r\n.editStudents {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\n.editStudents:before {\r\n    content: \"\\270E\";\r\n}\r\n\r\n.gpa {\r\n    color: rgb(161, 161, 161);\r\n    border: none;\r\n    outline: none;\r\n    border-radius: 4px;\r\n    height: 35px;\r\n    background: rgb(221, 235, 248);\r\n    padding-left: 20px;\r\n    position: relative;\r\n    margin: 15px;\r\n}\r\n\r\n.hideStudents {\r\n    display: none;\r\n}\r\n\r\n.hideStudent {\r\n    display: none;\r\n}\r\n\r\n.badGpa {\r\n    background: rgb(252, 140, 120);\r\n}\r\n\r\n.foundName {\r\n    background: rgb(247, 204, 97);\r\n}\r\n\r\n.gray{\r\n    background-color: rgb(235, 241, 247);\r\n}\r\n\r\n.shadow-delete {\r\n    position: absolute;\r\n    z-index: 15;\r\n    top: 0px;\r\n    bottom: 0px;\r\n    right: 0px;\r\n    left: 0px;\r\n    background: grey;\r\n    opacity: 0.5;\r\n}\r\n\r\ninput[type=\"date\"]::-webkit-clear-button {\r\n    display: none;\r\n}\r\n\r\ninput[type=\"date\"]::-webkit-inner-spin-button { \r\n    display: none;\r\n}\r\n\r\ninput[type=\"date\"]::-webkit-calendar-picker-indicator {\r\n    color: #2c3e50;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFibGUvdGFibGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7SUFDSSxtQkFBbUI7SUFDbkIsYUFBYTtJQUNiLGlHQUFpRztDQUNwRzs7QUFFRDtJQUNJLHNCQUFzQjtJQUN0QixhQUFhO0NBQ2hCOztBQUVEO0lBQ0ksMENBQTBDO0NBQzdDOztBQUVEO0lBQ0ksY0FBYztJQUNkLGVBQWU7SUFDZiw4QkFBOEI7O0NBRWpDOztBQUNEOztJQUVJLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsdUJBQXVCO0lBQ3ZCLGdCQUFnQjtJQUNoQixpR0FBaUc7O0NBRXBHOztBQUNEO0lBQ0ksK0JBQStCO0lBQy9CLG1CQUFtQjtJQUNuQiwwQkFBMEI7SUFDMUIsZ0JBQWdCO0lBQ2hCLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2IsY0FBYzs7Q0FFakI7O0FBR0Q7SUFDSSwwQkFBMEI7SUFDMUIsYUFBYTtJQUNiLGNBQWM7SUFDZCxtQkFBbUI7SUFDbkIsYUFBYTtJQUNiLCtCQUErQjtJQUMvQixtQkFBbUI7SUFDbkIsbUJBQW1CO0lBQ25CLGFBQWE7O0NBRWhCOztBQUtEO0lBQ0ksaUJBQWlCO0NBQ3BCOztBQUNEO0lBQ0ksaUJBQWlCO0NBQ3BCLGVBQWU7Q0FDZixhQUFhO0NBQ2IsY0FBYztDQUNkLGNBQWM7Q0FDZCxnQkFBZ0I7Q0FDaEIsaUJBQWlCO0NBQ2pCOztBQUVEOztJQUVJLCtCQUErQjtJQUMvQix5QkFBeUI7Q0FDNUI7O0FBRUQ7O0lBRUksZ0JBQWdCO0lBQ2hCLHVCQUF1QjtJQUN2QixrQkFBa0I7OztDQUdyQjs7QUFHRDs7Q0FFQywwQkFBMEI7Q0FDMUIsb0JBQW9CO0NBQ3BCOztBQUNEO0lBQ0kscUNBQXFDO0NBQ3hDOztBQUVEOztDQUVDLFlBQVk7Q0FDWiwwQkFBMEI7Q0FDMUI7O0FBRUQ7O0NBRUMsb0JBQW9CO0NBQ3BCLHVCQUF1QjtDQUN2Qjs7Ozs7K0NBSzhDO0NBQzlDOztBQUVEO0lBQ0ksYUFBYTtDQUNoQjs7QUFFRDs7SUFFSSxlQUFlO0lBQ2YsWUFBWTtDQUNmOztBQUVEOztHQUVHLGVBQWU7R0FDZixrQkFBa0I7R0FDbEIsWUFBWTtDQUNkOztBQUVEO0lBQ0ksaUJBQWlCO0NBQ3BCLGVBQWU7Q0FDZixhQUFhO0NBQ2IsY0FBYztDQUNkLGNBQWM7Q0FDZCxnQkFBZ0I7Q0FDaEIsaUJBQWlCO0NBQ2pCOztBQUVEO0lBQ0ksWUFBWTtJQUNaLGNBQWM7SUFDZCwyQ0FBMkM7SUFDM0MsNENBQTRDO0lBQzVDLHlDQUF5QztJQUN6QyxtQkFBbUI7O0NBRXRCOztBQUNEO0lBQ0ksWUFBWTtJQUNaLGNBQWM7SUFDZCwyQ0FBMkM7SUFDM0MsNENBQTRDO0lBQzVDLG1CQUFtQjtDQUN0Qjs7QUFDRDs7SUFFSSxvQkFBb0I7SUFDcEIsb0JBQW9CO0lBQ3BCLGlHQUFpRztJQUNqRywyQkFBMkI7O0NBRTlCOztBQUVELHlDQUF5QyxnQkFBZ0IsRUFBRSxnQkFBZ0IsRUFBRTs7QUFDN0UseUNBQXlDLGlCQUFpQixDQUFDLGlCQUFpQixFQUFFOztBQUM5RSx5Q0FBeUMsaUJBQWlCLENBQUMsaUJBQWlCLEVBQUU7O0FBQzlFLHlDQUF5QyxpQkFBaUIsQ0FBQyxpQkFBaUIsRUFBRTs7QUFDOUUseUNBQXlDLGlCQUFpQixFQUFFLGlCQUFpQixFQUFFOztBQUMvRSx5Q0FBeUMsaUJBQWlCLENBQUMsaUJBQWlCLEVBQUU7O0FBQzlFLHlDQUF5QyxpQkFBaUIsQ0FBQyxpQkFBaUIsRUFBRTs7QUFDOUUseUNBQXlDLGdCQUFnQixDQUFDLGdCQUFnQixFQUFFOztBQUM1RSx5Q0FBeUMsZ0JBQWdCLENBQUMsZ0JBQWdCLEVBQUU7O0FBRTVFO0lBQ0ksZ0JBQWdCO0lBQ2hCLG9CQUFvQjtDQUN2Qjs7QUFFRDtJQUNJLDBDQUEwQztDQUM3Qzs7QUFDRDtJQUNJLDBCQUEwQjtJQUMxQixhQUFhO0lBQ2IsY0FBYztJQUNkLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2IsK0JBQStCO0lBQy9CLG1CQUFtQjtJQUNuQixtQkFBbUI7SUFDbkIsYUFBYTs7O0NBR2hCOztBQUVEO0lBQ0ksbUJBQW1CO0lBQ25CLGFBQWE7SUFDYixrQkFBa0I7SUFDbEIsc0NBQXNDO0lBQ3RDLG1CQUFtQjtJQUNuQixjQUFjO0lBQ2QsU0FBUztJQUNULFVBQVU7SUFDVixtQkFBbUI7SUFDbkIsaUdBQWlHO0lBQ2pHLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLGFBQWE7SUFDYixZQUFZO0lBQ1osK0JBQStCO0lBQy9CLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2IsZ0JBQWdCO0lBQ2hCLG1CQUFtQjtJQUNuQixtR0FBbUc7SUFDbkcsbUJBQW1CO0lBQ25CLG1CQUFtQjtDQUN0Qjs7QUFHRDtJQUNJLGlCQUFpQjtDQUNwQixlQUFlO0NBQ2YsYUFBYTtDQUNiLGNBQWM7Q0FDZCxjQUFjO0NBQ2QsZ0JBQWdCO0NBQ2hCLGlCQUFpQjtDQUNqQjs7QUFDRDtJQUNJLGlCQUFpQjtDQUNwQjs7QUFFRDtJQUNJLGlCQUFpQjtDQUNwQixlQUFlO0NBQ2YsYUFBYTtDQUNiLGNBQWM7Q0FDZCxjQUFjO0NBQ2QsZ0JBQWdCO0NBQ2hCLGlCQUFpQjtDQUNqQjs7QUFFRDtJQUNJLGlCQUFpQjtDQUNwQjs7QUFHRDtJQUNJLDBCQUEwQjtJQUMxQixhQUFhO0lBQ2IsY0FBYztJQUNkLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2IsK0JBQStCO0lBQy9CLG1CQUFtQjtJQUNuQixtQkFBbUI7SUFDbkIsYUFBYTtDQUNoQjs7QUFFRDtJQUNJLGNBQWM7Q0FDakI7O0FBRUQ7SUFDSSxjQUFjO0NBQ2pCOztBQUVEO0lBQ0ksK0JBQStCO0NBQ2xDOztBQUVEO0lBQ0ksOEJBQThCO0NBQ2pDOztBQUVEO0lBQ0kscUNBQXFDO0NBQ3hDOztBQUVEO0lBQ0ksbUJBQW1CO0lBQ25CLFlBQVk7SUFDWixTQUFTO0lBQ1QsWUFBWTtJQUNaLFdBQVc7SUFDWCxVQUFVO0lBQ1YsaUJBQWlCO0lBQ2pCLGFBQWE7Q0FDaEI7O0FBR0Q7SUFDSSxjQUFjO0NBQ2pCOztBQUNEO0lBQ0ksY0FBYztDQUNqQjs7QUFFRDtJQUNJLGVBQWU7Q0FDbEIiLCJmaWxlIjoic3JjL2FwcC90YWJsZS90YWJsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbmgxIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbjogNTBweDtcclxuICAgIGZvbnQtZmFtaWx5OiBCbGlua01hY1N5c3RlbUZvbnQsIC1hcHBsZS1zeXN0ZW0sIFwiU2Vnb2UgVUlcIiwgUm9ib3RvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmO1xyXG59XHJcblxyXG5hIHtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLmJvcmRlciB7XHJcbiAgICBib3JkZXItbGVmdDogMnB4IHNvbGlkIHJnYigxNjEsIDE2MSwgMTYxKTtcclxufVxyXG5cclxuLkZsZXhQYXJlbnRze1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7IFxyXG5cclxufVxyXG4uZmxleENvbnRhaW5lciB7XHJcbiAgICBcclxuICAgIG1hcmdpbjogMHB4O1xyXG4gICAgYWxpZ24tc2VsZjogZmxleC1zdGFydDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBmbGV4OiAwIDQgMTIwcHg7XHJcbiAgICBmb250LWZhbWlseTogQmxpbmtNYWNTeXN0ZW1Gb250LCAtYXBwbGUtc3lzdGVtLCBcIlNlZ29lIFVJXCIsIFJvYm90bywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZjtcclxuXHJcbn1cclxuLm9uT2ZmIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYigyMjEsIDIzNSwgMjQ4KTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgIGNvbG9yOiByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDE1cHg7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG5cclxufVxyXG4gICAgXHJcblxyXG4uY2FsZW5kYXIge1xyXG4gICAgY29sb3I6IHJnYigxNjEsIDE2MSwgMTYxKTtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIG91dGxpbmU6IG5vbmU7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICBoZWlnaHQ6IDM1cHg7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMjIxLCAyMzUsIDI0OCk7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBtYXJnaW46IDE1cHg7XHJcblxyXG59XHJcblxyXG5cclxuXHJcblxyXG4uc29ydDpiZWZvcmUge1xyXG4gICAgY29udGVudDogXCJcXDIxOTNcIjtcclxufVxyXG4uc29ydCB7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG5cdGNvbG9yOiBpbmhlcml0O1xyXG5cdGJvcmRlcjogbm9uZTtcclxuXHRwYWRkaW5nOiAxMHB4O1xyXG5cdGZvbnQ6IGluaGVyaXQ7XHJcblx0Y3Vyc29yOiBwb2ludGVyO1xyXG5cdG91dGxpbmU6IGluaGVyaXQ7XHJcbn1cclxuXHJcbi50YWJsZVBhcmFtc0NvbG9ye1xyXG5cclxuICAgIGJhY2tncm91bmQ6IHJnYigyMjEsIDIzNSwgMjQ4KTtcclxuICAgIC8qIHBvc2l0aW9uOiBhYnNvbHV0ZTsgKi8gXHJcbn1cclxuXHJcbi5mbGV4eSB7XHJcbiAgICBcclxuICAgIG1heC13aWR0aDogMTAwJTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICNlZWU7XHJcbiAgICBtYXgtaGVpZ2h0OiA0MDBweDtcclxuICAgIFxyXG4gICAgXHJcbn1cclxuXHJcblxyXG4jc3R5bGUtMTU6Oi13ZWJraXQtc2Nyb2xsYmFyLXRyYWNrXHJcbntcclxuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjRjVGNUY1O1xyXG5cdGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbn1cclxuI3N0eWxlLTE1Ojotd2Via2l0LXNjcm9sbGJhci10cmFjazpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjE1LCAyMTgsIDIxOSk7XHJcbn1cclxuXHJcbiNzdHlsZS0xNTo6LXdlYmtpdC1zY3JvbGxiYXJcclxue1xyXG5cdHdpZHRoOiAxMHB4O1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNGNUY1RjU7XHJcbn1cclxuXHJcbiNzdHlsZS0xNTo6LXdlYmtpdC1zY3JvbGxiYXItdGh1bWJcclxue1xyXG5cdGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcblx0YmFja2dyb3VuZC1jb2xvcjogI0ZGRjtcclxuXHRiYWNrZ3JvdW5kLWltYWdlOiAtd2Via2l0LWdyYWRpZW50KGxpbmVhcixcclxuXHRcdFx0XHRcdFx0XHRcdFx0ICAgNDAlIDAlLFxyXG5cdFx0XHRcdFx0XHRcdFx0XHQgICA3NSUgODQlLFxyXG5cdFx0XHRcdFx0XHRcdFx0XHQgICBmcm9tKHJnYigxNjEsIDE2MSwgMTYxKSksXHJcblx0XHRcdFx0XHRcdFx0XHRcdCAgIHRvKHJnYigxNDYsIDE1MiwgMTU2KSksXHJcblx0XHRcdFx0XHRcdFx0XHRcdCAgIGNvbG9yLXN0b3AoLjYscmdiKDE5OSwgMjA2LCAyMTIpKSk7XHJcbn1cclxuXHJcbi53aWR0aC10ciB7XHJcbiAgICB3aWR0aDogNDAwcHg7XHJcbn1cclxuXHJcbnRhYmxlIHRib2R5LCB0YWJsZSB0aGVhZFxyXG57XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG50YWJsZSB0Ym9keSBcclxue1xyXG4gICBvdmVyZmxvdzogYXV0bztcclxuICAgbWF4LWhlaWdodDogNDAwcHg7XHJcbiAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG50ZCBidXR0b24ge1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuXHRjb2xvcjogaW5oZXJpdDtcclxuXHRib3JkZXI6IG5vbmU7XHJcblx0cGFkZGluZzogMTBweDtcclxuXHRmb250OiBpbmhlcml0O1xyXG5cdGN1cnNvcjogcG9pbnRlcjtcclxuXHRvdXRsaW5lOiBpbmhlcml0O1xyXG59XHJcblxyXG50aCB7XHJcbiAgICBtYXJnaW46IDBweDtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgICBib3JkZXItcmlnaHQ6IDJweCBzb2xpZCByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbiAgICBib3JkZXItYm90dG9tOiAycHggc29saWQgcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgYm9yZGVyLXRvcDogMnB4IHNvbGlkIHJnYigxNjEsIDE2MSwgMTYxKTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIFxyXG59XHJcbnRkIHtcclxuICAgIG1hcmdpbjogMHB4O1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIGJvcmRlci1yaWdodDogMnB4IHNvbGlkIHJnYigxNjEsIDE2MSwgMTYxKTtcclxuICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxudGFibGUgeyBcclxuICAgIFxyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuICAgIGJvcmRlci1zcGFjaW5nOiAwcHg7XHJcbiAgICBmb250LWZhbWlseTogQmxpbmtNYWNTeXN0ZW1Gb250LCAtYXBwbGUtc3lzdGVtLCBcIlNlZ29lIFVJXCIsIFJvYm90bywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZjsgXHJcbiAgICAvKiB0YWJsZS1sYXlvdXQ6IGZpeGVkOyAgKi9cclxuICAgIFxyXG59XHJcblxyXG50YWJsZSB0aDpudGgtY2hpbGQoMSksIHRkOm50aC1jaGlsZCgxKSB7IG1pbi13aWR0aDogNDBweDsgIG1heC13aWR0aDogNDBweDsgfVxyXG50YWJsZSB0aDpudGgtY2hpbGQoMiksIHRkOm50aC1jaGlsZCgyKSB7IG1pbi13aWR0aDogMTAwcHg7IG1heC13aWR0aDogMTAwcHg7IH1cclxudGFibGUgdGg6bnRoLWNoaWxkKDMpLCB0ZDpudGgtY2hpbGQoMykgeyBtaW4td2lkdGg6IDEwMHB4OyBtYXgtd2lkdGg6IDEwMHB4OyB9XHJcbnRhYmxlIHRoOm50aC1jaGlsZCg0KSwgdGQ6bnRoLWNoaWxkKDQpIHsgbWluLXdpZHRoOiAxMDBweDsgbWF4LXdpZHRoOiAxMDBweDsgfVxyXG50YWJsZSB0aDpudGgtY2hpbGQoNSksIHRkOm50aC1jaGlsZCg1KSB7IG1pbi13aWR0aDogMTAwcHg7ICBtYXgtd2lkdGg6IDEwMHB4OyB9XHJcbnRhYmxlIHRoOm50aC1jaGlsZCg2KSwgdGQ6bnRoLWNoaWxkKDYpIHsgbWluLXdpZHRoOiAxMDBweDsgbWF4LXdpZHRoOiAxMDBweDsgfVxyXG50YWJsZSB0aDpudGgtY2hpbGQoNyksIHRkOm50aC1jaGlsZCg3KSB7IG1pbi13aWR0aDogMTAwcHg7IG1heC13aWR0aDogMTAwcHg7IH1cclxudGFibGUgdGg6bnRoLWNoaWxkKDgpLCB0ZDpudGgtY2hpbGQoOCkgeyBtaW4td2lkdGg6IDQwcHg7IG1heC13aWR0aDogNDBweDsgfVxyXG50YWJsZSB0aDpudGgtY2hpbGQoOSksIHRkOm50aC1jaGlsZCg5KSB7IG1pbi13aWR0aDogNDBweDsgbWF4LXdpZHRoOiA0MHB4OyB9XHJcblxyXG4udGFibGUge1xyXG4gICAgZmxleDogMCAxIDk4NXB4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLmJvcmRlcnMge1xyXG4gICAgYm9yZGVyLWxlZnQ6IDJweCBzb2xpZCByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbn1cclxuLnNlYXJjaCB7XHJcbiAgICBjb2xvcjogcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgIGhlaWdodDogMzVweDtcclxuICAgIGJhY2tncm91bmQ6IHJnYigyMjEsIDIzNSwgMjQ4KTtcclxuICAgIHBhZGRpbmctbGVmdDogMjBweDtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIG1hcmdpbjogMTVweDtcclxuXHJcblxyXG59XHJcblxyXG4ucG9wdXAge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgd2lkdGg6IDMwMHB4O1xyXG4gICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICBib3JkZXI6IDZweCBkb3VibGUgcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgcGFkZGluZzogMjRweDtcclxuICAgIHRvcDogMjUlO1xyXG4gICAgbGVmdDogMzUlO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1mYW1pbHk6IEJsaW5rTWFjU3lzdGVtRm9udCwgLWFwcGxlLXN5c3RlbSwgXCJTZWdvZSBVSVwiLCBSb2JvdG8sIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWY7XHJcbiAgICB6LWluZGV4OiAyMDtcclxufVxyXG5cclxuLmRlbGV0ZSB7XHJcbiAgICBwYWRkaW5nOiA4cHg7XHJcbiAgICB3aWR0aDogODBweDtcclxuICAgIGJhY2tncm91bmQ6IHJnYigxNjEsIDE2MSwgMTYxKTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtZmFtaWx5OiBCbGlua01hY1N5c3RlbUZvbnQsIC1hcHBsZS1zeXN0ZW0sIFwiU2Vnb2UgVUlcIiwgXCJSb2JvdG9cIiwgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZjtcclxuICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxufVxyXG5cclxuXHJcbi5kZWxldGVTdHVkZW50cyB7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG5cdGNvbG9yOiBpbmhlcml0O1xyXG5cdGJvcmRlcjogbm9uZTtcclxuXHRwYWRkaW5nOiAxMHB4O1xyXG5cdGZvbnQ6IGluaGVyaXQ7XHJcblx0Y3Vyc29yOiBwb2ludGVyO1xyXG5cdG91dGxpbmU6IGluaGVyaXQ7XHJcbn1cclxuLmRlbGV0ZVN0dWRlbnRzOmJlZm9yZXtcclxuICAgIGNvbnRlbnQ6IFwiXFwyNzE4XCI7XHJcbn1cclxuXHJcbi5lZGl0U3R1ZGVudHMge1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuXHRjb2xvcjogaW5oZXJpdDtcclxuXHRib3JkZXI6IG5vbmU7XHJcblx0cGFkZGluZzogMTBweDtcclxuXHRmb250OiBpbmhlcml0O1xyXG5cdGN1cnNvcjogcG9pbnRlcjtcclxuXHRvdXRsaW5lOiBpbmhlcml0O1xyXG59XHJcblxyXG4uZWRpdFN0dWRlbnRzOmJlZm9yZSB7XHJcbiAgICBjb250ZW50OiBcIlxcMjcwRVwiO1xyXG59XHJcblxyXG5cclxuLmdwYSB7XHJcbiAgICBjb2xvcjogcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgIGhlaWdodDogMzVweDtcclxuICAgIGJhY2tncm91bmQ6IHJnYigyMjEsIDIzNSwgMjQ4KTtcclxuICAgIHBhZGRpbmctbGVmdDogMjBweDtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIG1hcmdpbjogMTVweDtcclxufVxyXG5cclxuLmhpZGVTdHVkZW50cyB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcblxyXG4uaGlkZVN0dWRlbnQge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG5cclxuLmJhZEdwYSB7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMjUyLCAxNDAsIDEyMCk7XHJcbn1cclxuXHJcbi5mb3VuZE5hbWUge1xyXG4gICAgYmFja2dyb3VuZDogcmdiKDI0NywgMjA0LCA5Nyk7XHJcbn1cclxuXHJcbi5ncmF5e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIzNSwgMjQxLCAyNDcpO1xyXG59XHJcblxyXG4uc2hhZG93LWRlbGV0ZSB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB6LWluZGV4OiAxNTtcclxuICAgIHRvcDogMHB4O1xyXG4gICAgYm90dG9tOiAwcHg7XHJcbiAgICByaWdodDogMHB4O1xyXG4gICAgbGVmdDogMHB4O1xyXG4gICAgYmFja2dyb3VuZDogZ3JleTtcclxuICAgIG9wYWNpdHk6IDAuNTtcclxufVxyXG5cclxuXHJcbmlucHV0W3R5cGU9XCJkYXRlXCJdOjotd2Via2l0LWNsZWFyLWJ1dHRvbiB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbmlucHV0W3R5cGU9XCJkYXRlXCJdOjotd2Via2l0LWlubmVyLXNwaW4tYnV0dG9uIHsgXHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcblxyXG5pbnB1dFt0eXBlPVwiZGF0ZVwiXTo6LXdlYmtpdC1jYWxlbmRhci1waWNrZXItaW5kaWNhdG9yIHtcclxuICAgIGNvbG9yOiAjMmMzZTUwO1xyXG59XHJcbiJdfQ== */"
+module.exports = "\r\nh1 {\r\n    text-align: center;\r\n    margin: 50px;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\r\n}\r\n\r\na {\r\n    text-decoration: none;\r\n    color: black;\r\n}\r\n\r\n.border {\r\n    border-left: 2px solid rgb(161, 161, 161);\r\n}\r\n\r\n.FlexParents{\r\n    display: flex;\r\n    margin: 0 auto;\r\n    justify-content: space-between; \r\n\r\n}\r\n\r\n.flexContainer {\r\n    \r\n    margin: 0px;\r\n    align-content: flex-start;\r\n    flex-direction: column;\r\n    flex: 0 4 120px;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\r\n    \r\n\r\n}\r\n\r\n.onOff {\r\n    background: rgb(221, 235, 248);\r\n    border-radius: 4px;\r\n    color: rgb(161, 161, 161);\r\n    cursor: pointer;\r\n    text-align: center;\r\n    margin: 15px;\r\n    padding: 10px;\r\n\r\n}\r\n\r\n.calendar {\r\n    color: rgb(161, 161, 161);\r\n    border: none;\r\n    outline: none;\r\n    border-radius: 4px;\r\n    height: 35px;\r\n    background: rgb(221, 235, 248);\r\n    padding-left: 20px;\r\n    position: relative;\r\n    margin: 15px;\r\n\r\n}\r\n\r\n.sort:before {\r\n    content: \"\\2193\";\r\n}\r\n\r\n.sort {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\n.tableParamsColor{\r\n\r\n    background: rgb(221, 235, 248);\r\n    /* position: absolute; */ \r\n}\r\n\r\n.entity_table {\r\n    /* display: flex; */\r\n    /* flex: 0 1 1000px; */\r\n    /* justify-content: center;\r\n    justify-self: center;\r\n    align-self: center; */\r\n}\r\n\r\n.border {\r\n\r\n}\r\n\r\n.flexy {    \r\n    max-width: 100%;\r\n    border: 1px solid #eee;\r\n    max-height: 400px; \r\n       \r\n}\r\n\r\n#scroll_style::-webkit-scrollbar-track\r\n{\r\n\tbackground-color: #F5F5F5;\r\n\tborder-radius: 10px;\r\n}\r\n\r\n#scroll_style::-webkit-scrollbar-track:hover {\r\n    background-color: rgb(215, 218, 219);\r\n}\r\n\r\n#scroll_style::-webkit-scrollbar\r\n{\r\n\twidth: 10px;\r\n\tbackground-color: #F5F5F5;\r\n}\r\n\r\n#scroll_style::-webkit-scrollbar-thumb\r\n{\r\n\tborder-radius: 10px;\r\n\tbackground-color: #FFF;\r\n\tbackground-image: -webkit-gradient(linear,\r\n\t\t\t\t\t\t\t\t\t   40% 0%,\r\n\t\t\t\t\t\t\t\t\t   75% 84%,\r\n\t\t\t\t\t\t\t\t\t   from(rgb(161, 161, 161)),\r\n\t\t\t\t\t\t\t\t\t   to(rgb(146, 152, 156)),\r\n\t\t\t\t\t\t\t\t\t   color-stop(.6,rgb(199, 206, 212)));\r\n}\r\n\r\n.width-tr {\r\n    width: 400px;\r\n}\r\n\r\ntable tbody, table thead\r\n{\r\n    display: block;\r\n    width: 100%;\r\n}\r\n\r\ntable tbody \r\n{\r\n   overflow: auto;\r\n   max-height: 400px;\r\n   width: 100%;\r\n}\r\n\r\ntd button {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\nth {\r\n    margin: 0px;\r\n    padding: 10px;\r\n    border-right: 2px solid rgb(161, 161, 161);\r\n    border-bottom: 2px solid rgb(161, 161, 161);\r\n    border-top: 2px solid rgb(161, 161, 161);\r\n    text-align: center;\r\n    \r\n}\r\n\r\ntd {\r\n    margin: 0px;\r\n    padding: 10px;\r\n    border-right: 2px solid rgb(161, 161, 161);\r\n    border-bottom: 2px solid rgb(161, 161, 161);\r\n    text-align: center;\r\n}\r\n\r\ntable { \r\n    \r\n    border-radius: 10px;\r\n    border-spacing: 0px;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; \r\n    \r\n}\r\n\r\ntable th:nth-child(1), td:nth-child(1) { min-width: 40px;  max-width: 40px; }\r\n\r\ntable th:nth-child(2), td:nth-child(2) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(3), td:nth-child(3) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(4), td:nth-child(4) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(5), td:nth-child(5) { min-width: 100px;  max-width: 100px; }\r\n\r\ntable th:nth-child(6), td:nth-child(6) { min-width: 100px; max-width: 100px; }\r\n\r\ntable th:nth-child(7), td:nth-child(7) { min-width: 60px; max-width: 60px; }\r\n\r\ntable th:nth-child(8), td:nth-child(8) { min-width: 40px; max-width: 40px; }\r\n\r\ntable th:nth-child(9), td:nth-child(9) { min-width: 40px; max-width: 40px; }\r\n\r\n.borders {\r\n    border-left: 2px solid rgb(161, 161, 161);\r\n}\r\n\r\n.search {\r\n    color: rgb(161, 161, 161);\r\n    border: none;\r\n    outline: none;\r\n    border-radius: 4px;\r\n    height: 35px;\r\n    background: rgb(221, 235, 248);\r\n    padding-left: 20px;\r\n    position: relative;\r\n    margin: 15px;\r\n\r\n\r\n}\r\n\r\n.popup {\r\n\r\n    position: fixed;\r\n    width: 300px;\r\n    background: white;\r\n    border: 6px double rgb(161, 161, 161);\r\n    border-radius: 4px;\r\n    padding: 24px;\r\n    top: 25%;\r\n    left: 35%;\r\n    text-align: center;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\r\n    z-index: 20;\r\n}\r\n\r\n.delete {\r\n    padding: 8px;\r\n    width: 80px;\r\n    background: rgb(161, 161, 161);\r\n    border-radius: 4px;\r\n    color: white;\r\n    cursor: pointer;\r\n    text-align: center;\r\n    font-family: BlinkMacSystemFont, -apple-system, \"Segoe UI\", \"Roboto\", Helvetica, Arial, sans-serif;\r\n    margin-right: 20px;\r\n    margin-right: 20px;\r\n}\r\n\r\n.deleteStudents {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\n.deleteStudents:before{\r\n    content: \"\\2718\";\r\n}\r\n\r\n.editStudents {\r\n    background: none;\r\n\tcolor: inherit;\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tfont: inherit;\r\n\tcursor: pointer;\r\n\toutline: inherit;\r\n}\r\n\r\n.editStudents:before {\r\n    content: \"\\270E\";\r\n}\r\n\r\n.gpa {\r\n    color: rgb(161, 161, 161);\r\n    border: none;\r\n    outline: none;\r\n    border-radius: 4px;\r\n    height: 35px;\r\n    background: rgb(221, 235, 248);\r\n    padding-left: 20px;\r\n    position: relative;\r\n    margin: 15px;\r\n}\r\n\r\n.hideStudents {\r\n    display: none;\r\n}\r\n\r\n.hideStudent {\r\n    display: none;\r\n}\r\n\r\n.badGpa {\r\n    background: rgb(252, 140, 120);\r\n}\r\n\r\n.foundName {\r\n    background: rgb(247, 204, 97);\r\n}\r\n\r\n.gray{\r\n    background-color: rgb(235, 241, 247);\r\n}\r\n\r\n.shadow-delete {\r\n    position: absolute;\r\n    z-index: 15;\r\n    top: 0px;\r\n    bottom: 0px;\r\n    right: 0px;\r\n    left: 0px;\r\n    background: grey;\r\n    opacity: 0.5;\r\n}\r\n\r\ninput[type=\"date\"]::-webkit-clear-button {\r\n    display: none;\r\n}\r\n\r\ninput[type=\"date\"]::-webkit-inner-spin-button { \r\n    display: none;\r\n}\r\n\r\ninput[type=\"date\"]::-webkit-calendar-picker-indicator {\r\n    color: #2c3e50;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFibGUvdGFibGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7SUFDSSxtQkFBbUI7SUFDbkIsYUFBYTtJQUNiLGlHQUFpRztDQUNwRzs7QUFFRDtJQUNJLHNCQUFzQjtJQUN0QixhQUFhO0NBQ2hCOztBQUVEO0lBQ0ksMENBQTBDO0NBQzdDOztBQUVEO0lBQ0ksY0FBYztJQUNkLGVBQWU7SUFDZiwrQkFBK0I7O0NBRWxDOztBQUNEOztJQUVJLFlBQVk7SUFDWiwwQkFBMEI7SUFDMUIsdUJBQXVCO0lBQ3ZCLGdCQUFnQjtJQUNoQixpR0FBaUc7OztDQUdwRzs7QUFDRDtJQUNJLCtCQUErQjtJQUMvQixtQkFBbUI7SUFDbkIsMEJBQTBCO0lBQzFCLGdCQUFnQjtJQUNoQixtQkFBbUI7SUFDbkIsYUFBYTtJQUNiLGNBQWM7O0NBRWpCOztBQUdEO0lBQ0ksMEJBQTBCO0lBQzFCLGFBQWE7SUFDYixjQUFjO0lBQ2QsbUJBQW1CO0lBQ25CLGFBQWE7SUFDYiwrQkFBK0I7SUFDL0IsbUJBQW1CO0lBQ25CLG1CQUFtQjtJQUNuQixhQUFhOztDQUVoQjs7QUFHRDtJQUNJLGlCQUFpQjtDQUNwQjs7QUFDRDtJQUNJLGlCQUFpQjtDQUNwQixlQUFlO0NBQ2YsYUFBYTtDQUNiLGNBQWM7Q0FDZCxjQUFjO0NBQ2QsZ0JBQWdCO0NBQ2hCLGlCQUFpQjtDQUNqQjs7QUFFRDs7SUFFSSwrQkFBK0I7SUFDL0IseUJBQXlCO0NBQzVCOztBQUVEO0lBQ0ksb0JBQW9CO0lBQ3BCLHVCQUF1QjtJQUN2Qjs7MEJBRXNCO0NBQ3pCOztBQUVEOztDQUVDOztBQUVEO0lBQ0ksZ0JBQWdCO0lBQ2hCLHVCQUF1QjtJQUN2QixrQkFBa0I7O0NBRXJCOztBQUdEOztDQUVDLDBCQUEwQjtDQUMxQixvQkFBb0I7Q0FDcEI7O0FBQ0Q7SUFDSSxxQ0FBcUM7Q0FDeEM7O0FBRUQ7O0NBRUMsWUFBWTtDQUNaLDBCQUEwQjtDQUMxQjs7QUFFRDs7Q0FF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O0FBRUQ7SUFDSSxlQUFlO0NBQ2xCIiwiZmlsZSI6InNyYy9hcHAvdGFibGUvdGFibGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5oMSB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDUwcHg7XHJcbiAgICBmb250LWZhbWlseTogQmxpbmtNYWNTeXN0ZW1Gb250LCAtYXBwbGUtc3lzdGVtLCBcIlNlZ29lIFVJXCIsIFJvYm90bywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZjtcclxufVxyXG5cclxuYSB7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbi5ib3JkZXIge1xyXG4gICAgYm9yZGVyLWxlZnQ6IDJweCBzb2xpZCByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbn1cclxuXHJcbi5GbGV4UGFyZW50c3tcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBtYXJnaW46IDAgYXV0bztcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjsgXHJcblxyXG59XHJcbi5mbGV4Q29udGFpbmVyIHtcclxuICAgIFxyXG4gICAgbWFyZ2luOiAwcHg7XHJcbiAgICBhbGlnbi1jb250ZW50OiBmbGV4LXN0YXJ0O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIGZsZXg6IDAgNCAxMjBweDtcclxuICAgIGZvbnQtZmFtaWx5OiBCbGlua01hY1N5c3RlbUZvbnQsIC1hcHBsZS1zeXN0ZW0sIFwiU2Vnb2UgVUlcIiwgUm9ib3RvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmO1xyXG4gICAgXHJcblxyXG59XHJcbi5vbk9mZiB7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMjIxLCAyMzUsIDI0OCk7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICBjb2xvcjogcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luOiAxNXB4O1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuXHJcbn1cclxuICAgIFxyXG5cclxuLmNhbGVuZGFyIHtcclxuICAgIGNvbG9yOiByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBvdXRsaW5lOiBub25lO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgaGVpZ2h0OiAzNXB4O1xyXG4gICAgYmFja2dyb3VuZDogcmdiKDIyMSwgMjM1LCAyNDgpO1xyXG4gICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgbWFyZ2luOiAxNXB4O1xyXG5cclxufVxyXG5cclxuXHJcbi5zb3J0OmJlZm9yZSB7XHJcbiAgICBjb250ZW50OiBcIlxcMjE5M1wiO1xyXG59XHJcbi5zb3J0IHtcclxuICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcblx0Y29sb3I6IGluaGVyaXQ7XHJcblx0Ym9yZGVyOiBub25lO1xyXG5cdHBhZGRpbmc6IDEwcHg7XHJcblx0Zm9udDogaW5oZXJpdDtcclxuXHRjdXJzb3I6IHBvaW50ZXI7XHJcblx0b3V0bGluZTogaW5oZXJpdDtcclxufVxyXG5cclxuLnRhYmxlUGFyYW1zQ29sb3J7XHJcblxyXG4gICAgYmFja2dyb3VuZDogcmdiKDIyMSwgMjM1LCAyNDgpO1xyXG4gICAgLyogcG9zaXRpb246IGFic29sdXRlOyAqLyBcclxufVxyXG5cclxuLmVudGl0eV90YWJsZSB7XHJcbiAgICAvKiBkaXNwbGF5OiBmbGV4OyAqL1xyXG4gICAgLyogZmxleDogMCAxIDEwMDBweDsgKi9cclxuICAgIC8qIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAganVzdGlmeS1zZWxmOiBjZW50ZXI7XHJcbiAgICBhbGlnbi1zZWxmOiBjZW50ZXI7ICovXHJcbn1cclxuXHJcbi5ib3JkZXIge1xyXG5cclxufVxyXG5cclxuLmZsZXh5IHsgICAgXHJcbiAgICBtYXgtd2lkdGg6IDEwMCU7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjZWVlO1xyXG4gICAgbWF4LWhlaWdodDogNDAwcHg7IFxyXG4gICAgICAgXHJcbn1cclxuXHJcblxyXG4jc2Nyb2xsX3N0eWxlOjotd2Via2l0LXNjcm9sbGJhci10cmFja1xyXG57XHJcblx0YmFja2dyb3VuZC1jb2xvcjogI0Y1RjVGNTtcclxuXHRib3JkZXItcmFkaXVzOiAxMHB4O1xyXG59XHJcbiNzY3JvbGxfc3R5bGU6Oi13ZWJraXQtc2Nyb2xsYmFyLXRyYWNrOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigyMTUsIDIxOCwgMjE5KTtcclxufVxyXG5cclxuI3Njcm9sbF9zdHlsZTo6LXdlYmtpdC1zY3JvbGxiYXJcclxue1xyXG5cdHdpZHRoOiAxMHB4O1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNGNUY1RjU7XHJcbn1cclxuXHJcbiNzY3JvbGxfc3R5bGU6Oi13ZWJraXQtc2Nyb2xsYmFyLXRodW1iXHJcbntcclxuXHRib3JkZXItcmFkaXVzOiAxMHB4O1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNGRkY7XHJcblx0YmFja2dyb3VuZC1pbWFnZTogLXdlYmtpdC1ncmFkaWVudChsaW5lYXIsXHJcblx0XHRcdFx0XHRcdFx0XHRcdCAgIDQwJSAwJSxcclxuXHRcdFx0XHRcdFx0XHRcdFx0ICAgNzUlIDg0JSxcclxuXHRcdFx0XHRcdFx0XHRcdFx0ICAgZnJvbShyZ2IoMTYxLCAxNjEsIDE2MSkpLFxyXG5cdFx0XHRcdFx0XHRcdFx0XHQgICB0byhyZ2IoMTQ2LCAxNTIsIDE1NikpLFxyXG5cdFx0XHRcdFx0XHRcdFx0XHQgICBjb2xvci1zdG9wKC42LHJnYigxOTksIDIwNiwgMjEyKSkpO1xyXG59XHJcblxyXG4ud2lkdGgtdHIge1xyXG4gICAgd2lkdGg6IDQwMHB4O1xyXG59XHJcblxyXG50YWJsZSB0Ym9keSwgdGFibGUgdGhlYWRcclxue1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxudGFibGUgdGJvZHkgXHJcbntcclxuICAgb3ZlcmZsb3c6IGF1dG87XHJcbiAgIG1heC1oZWlnaHQ6IDQwMHB4O1xyXG4gICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxudGQgYnV0dG9uIHtcclxuICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcblx0Y29sb3I6IGluaGVyaXQ7XHJcblx0Ym9yZGVyOiBub25lO1xyXG5cdHBhZGRpbmc6IDEwcHg7XHJcblx0Zm9udDogaW5oZXJpdDtcclxuXHRjdXJzb3I6IHBvaW50ZXI7XHJcblx0b3V0bGluZTogaW5oZXJpdDtcclxufVxyXG5cclxudGgge1xyXG4gICAgbWFyZ2luOiAwcHg7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gICAgYm9yZGVyLXJpZ2h0OiAycHggc29saWQgcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkIHJnYigxNjEsIDE2MSwgMTYxKTtcclxuICAgIGJvcmRlci10b3A6IDJweCBzb2xpZCByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBcclxufVxyXG50ZCB7XHJcbiAgICBtYXJnaW46IDBweDtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgICBib3JkZXItcmlnaHQ6IDJweCBzb2xpZCByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbiAgICBib3JkZXItYm90dG9tOiAycHggc29saWQgcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbnRhYmxlIHsgXHJcbiAgICBcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICBib3JkZXItc3BhY2luZzogMHB4O1xyXG4gICAgZm9udC1mYW1pbHk6IEJsaW5rTWFjU3lzdGVtRm9udCwgLWFwcGxlLXN5c3RlbSwgXCJTZWdvZSBVSVwiLCBSb2JvdG8sIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWY7IFxyXG4gICAgXHJcbn1cclxuXHJcbnRhYmxlIHRoOm50aC1jaGlsZCgxKSwgdGQ6bnRoLWNoaWxkKDEpIHsgbWluLXdpZHRoOiA0MHB4OyAgbWF4LXdpZHRoOiA0MHB4OyB9XHJcbnRhYmxlIHRoOm50aC1jaGlsZCgyKSwgdGQ6bnRoLWNoaWxkKDIpIHsgbWluLXdpZHRoOiAxMDBweDsgbWF4LXdpZHRoOiAxMDBweDsgfVxyXG50YWJsZSB0aDpudGgtY2hpbGQoMyksIHRkOm50aC1jaGlsZCgzKSB7IG1pbi13aWR0aDogMTAwcHg7IG1heC13aWR0aDogMTAwcHg7IH1cclxudGFibGUgdGg6bnRoLWNoaWxkKDQpLCB0ZDpudGgtY2hpbGQoNCkgeyBtaW4td2lkdGg6IDEwMHB4OyBtYXgtd2lkdGg6IDEwMHB4OyB9XHJcbnRhYmxlIHRoOm50aC1jaGlsZCg1KSwgdGQ6bnRoLWNoaWxkKDUpIHsgbWluLXdpZHRoOiAxMDBweDsgIG1heC13aWR0aDogMTAwcHg7IH1cclxudGFibGUgdGg6bnRoLWNoaWxkKDYpLCB0ZDpudGgtY2hpbGQoNikgeyBtaW4td2lkdGg6IDEwMHB4OyBtYXgtd2lkdGg6IDEwMHB4OyB9XHJcbnRhYmxlIHRoOm50aC1jaGlsZCg3KSwgdGQ6bnRoLWNoaWxkKDcpIHsgbWluLXdpZHRoOiA2MHB4OyBtYXgtd2lkdGg6IDYwcHg7IH1cclxudGFibGUgdGg6bnRoLWNoaWxkKDgpLCB0ZDpudGgtY2hpbGQoOCkgeyBtaW4td2lkdGg6IDQwcHg7IG1heC13aWR0aDogNDBweDsgfVxyXG50YWJsZSB0aDpudGgtY2hpbGQoOSksIHRkOm50aC1jaGlsZCg5KSB7IG1pbi13aWR0aDogNDBweDsgbWF4LXdpZHRoOiA0MHB4OyB9XHJcblxyXG5cclxuLmJvcmRlcnMge1xyXG4gICAgYm9yZGVyLWxlZnQ6IDJweCBzb2xpZCByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbn1cclxuLnNlYXJjaCB7XHJcbiAgICBjb2xvcjogcmdiKDE2MSwgMTYxLCAxNjEpO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgIGhlaWdodDogMzVweDtcclxuICAgIGJhY2tncm91bmQ6IHJnYigyMjEsIDIzNSwgMjQ4KTtcclxuICAgIHBhZGRpbmctbGVmdDogMjBweDtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIG1hcmdpbjogMTVweDtcclxuXHJcblxyXG59XHJcblxyXG4ucG9wdXAge1xyXG5cclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGJhY2tncm91bmQ6IHdoaXRlO1xyXG4gICAgYm9yZGVyOiA2cHggZG91YmxlIHJnYigxNjEsIDE2MSwgMTYxKTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgIHBhZGRpbmc6IDI0cHg7XHJcbiAgICB0b3A6IDI1JTtcclxuICAgIGxlZnQ6IDM1JTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtZmFtaWx5OiBCbGlua01hY1N5c3RlbUZvbnQsIC1hcHBsZS1zeXN0ZW0sIFwiU2Vnb2UgVUlcIiwgUm9ib3RvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmO1xyXG4gICAgei1pbmRleDogMjA7XHJcbn1cclxuXHJcbi5kZWxldGUge1xyXG4gICAgcGFkZGluZzogOHB4O1xyXG4gICAgd2lkdGg6IDgwcHg7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMTYxLCAxNjEsIDE2MSk7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBmb250LWZhbWlseTogQmxpbmtNYWNTeXN0ZW1Gb250LCAtYXBwbGUtc3lzdGVtLCBcIlNlZ29lIFVJXCIsIFwiUm9ib3RvXCIsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWY7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XHJcbn1cclxuXHJcblxyXG4uZGVsZXRlU3R1ZGVudHMge1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuXHRjb2xvcjogaW5oZXJpdDtcclxuXHRib3JkZXI6IG5vbmU7XHJcblx0cGFkZGluZzogMTBweDtcclxuXHRmb250OiBpbmhlcml0O1xyXG5cdGN1cnNvcjogcG9pbnRlcjtcclxuXHRvdXRsaW5lOiBpbmhlcml0O1xyXG59XHJcbi5kZWxldGVTdHVkZW50czpiZWZvcmV7XHJcbiAgICBjb250ZW50OiBcIlxcMjcxOFwiO1xyXG59XHJcblxyXG4uZWRpdFN0dWRlbnRzIHtcclxuICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcblx0Y29sb3I6IGluaGVyaXQ7XHJcblx0Ym9yZGVyOiBub25lO1xyXG5cdHBhZGRpbmc6IDEwcHg7XHJcblx0Zm9udDogaW5oZXJpdDtcclxuXHRjdXJzb3I6IHBvaW50ZXI7XHJcblx0b3V0bGluZTogaW5oZXJpdDtcclxufVxyXG5cclxuLmVkaXRTdHVkZW50czpiZWZvcmUge1xyXG4gICAgY29udGVudDogXCJcXDI3MEVcIjtcclxufVxyXG5cclxuXHJcbi5ncGEge1xyXG4gICAgY29sb3I6IHJnYigxNjEsIDE2MSwgMTYxKTtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIG91dGxpbmU6IG5vbmU7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICBoZWlnaHQ6IDM1cHg7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMjIxLCAyMzUsIDI0OCk7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBtYXJnaW46IDE1cHg7XHJcbn1cclxuXHJcbi5oaWRlU3R1ZGVudHMge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG5cclxuLmhpZGVTdHVkZW50IHtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuXHJcbi5iYWRHcGEge1xyXG4gICAgYmFja2dyb3VuZDogcmdiKDI1MiwgMTQwLCAxMjApO1xyXG59XHJcblxyXG4uZm91bmROYW1lIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYigyNDcsIDIwNCwgOTcpO1xyXG59XHJcblxyXG4uZ3JheXtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigyMzUsIDI0MSwgMjQ3KTtcclxufVxyXG5cclxuLnNoYWRvdy1kZWxldGUge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogMTU7XHJcbiAgICB0b3A6IDBweDtcclxuICAgIGJvdHRvbTogMHB4O1xyXG4gICAgcmlnaHQ6IDBweDtcclxuICAgIGxlZnQ6IDBweDtcclxuICAgIGJhY2tncm91bmQ6IGdyZXk7XHJcbiAgICBvcGFjaXR5OiAwLjU7XHJcbn1cclxuXHJcblxyXG5pbnB1dFt0eXBlPVwiZGF0ZVwiXTo6LXdlYmtpdC1jbGVhci1idXR0b24ge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG5pbnB1dFt0eXBlPVwiZGF0ZVwiXTo6LXdlYmtpdC1pbm5lci1zcGluLWJ1dHRvbiB7IFxyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG5cclxuaW5wdXRbdHlwZT1cImRhdGVcIl06Oi13ZWJraXQtY2FsZW5kYXItcGlja2VyLWluZGljYXRvciB7XHJcbiAgICBjb2xvcjogIzJjM2U1MDtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -1392,7 +1371,7 @@ module.exports = "\r\nh1 {\r\n    text-align: center;\r\n    margin: 50px;\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n\n<h1>Список студентов</h1>\n\n<div class=\"FlexParents\">\n \n\n  <div class=\"flexContainer\">\n    <div appButtonOnOff><b>Отл/Вкл выделение неуспевающих студентов:</b></div>\n    <button class=\"onOff\" (click)=\"toggleCheckAssessment()\">Отключить/Включить </button>\n    <div><b>Поиск студента по Имени и/или Фамилии:</b></div>\n    <input [(ngModel)]=\"fullName\" class=\"search\" type=\"text\" placeholder=\"Поиск студента\">\n    <div><b>Фильтрация по дню рождения:</b></div>\n    <input [(ngModel)]=\"dataInput\" class=\"calendar\" type=\"date\" >\n    <div><b>Фильтрация по среднему баллу:</b></div>\n    <input [(ngModel)]=\"Gpa\" class=\"gpa\" type=\"text\" placeholder=\"Введите средний балл:\">\n    <button class=\"onOff\" (click)=\"_toggleCreateStudent()\" routerLink=\"/form/create\" >Добавить студента</button>\n  </div>\n  \n    <table class=\"flexy\">\n      <thead>\n        <tr class=\"tableParamsColor\"><th style=\"border-left: 2px solid rgb(161, 161, 161);\">№:</th><th>Фамилия:<button class=\"sort\" (click)=\"sortSurName()\"></button></th>\n          <th>Имя:<button class=\"sort\" (click)=\"sortName()\"></button></th><th>Отчество:<button class=\"sort\" (click)=\"sortPatr()\"></button></th>\n          <th>Дата рождения:<button class=\"sort\" (click)=\"sortBirh()\"></button></th><th>Возраст:</th><th>С/б:\n            <button class=\"sort\" (click)=\"sortAssessment()\"></button></th><th></th><th></th></tr>\n      </thead>\n\n      <tbody id=\"style-15\">\n        <tr class=\"width-tr\" *ngFor=\"let student of students; let i = index\" \n        [ngClass]=\"{'badGpa': CheckAssessment(student.gpa), 'foundName': searchFullName(i), 'hideStudents': filtrateBirthday(i),\n        'hideStudent': filtrateGpa(i), 'gray': !CheckAssessment(student.gpa) && !searchFullName(i) && !filtrateBirthday(i) && !filtrateGpa(i) && i%2===0}\" appHighlightStudent [appEditSize]=\"'20px'\" [defaultSize]=\"'14px'\" >\n          <td class =\"border\"><b>{{i + 1}}</b></td>\n          <td><button [routerLink]=\"['view', student._id]\">{{student.lastName | titlecase | reductionFullname}}<br>\n          <div class=\"transliteFullName\" appTranslite >{{student.lastName | translite | titlecase | reductionFullname}}</div></button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.firstName | titlecase | reductionFullname}}<br>\n            <div class=\"transliteFullName\" appTranslite>{{student.firstName | translite | titlecase | reductionFullname}}</div></button></td>\n          <td><button [routerLink]=\"['view', student._id]\" >{{student.patronymic | titlecase | reductionFullname}}<br>\n            <div appTranslite>{{student.patronymic | translite | titlecase | reductionFullname}}</div></button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.birthDay | date}}</button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.birthDay | birthday}}</button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.gpa | number: '1.0-1'}}</button></td>\n          <td><button  class=\"deleteStudents\" (click)=\"deleteStudent(student); _checkShadow()\"></button></td>\n          <td><button  class=\"editStudents\" (click)=\"_editStudent(student)\" [routerLink]=\"['/form/edit', student._id]\" ></button></td>\n        </tr>\n      </tbody>\n      \n    </table>\n</div>\n\n\n<div [ngClass]=\"{'shadow-delete':checkShadow}\"></div>\n<div class=\"popup\" *ngIf=\"CheckDelete\"><p><b>Вы уверены, что хотите удалить информацию об ученике?</b></p>\n  <div class=\"containerDel\">\n    <button (click)=\"_checkShadow()\" [appDeleteStudent]=\"'Вы точно уверены?'\" [function] = \"deleteStudent(remoteStudent)\" [disabled]=\"Delete === 'true'\"\n    class=\"delete\"(click)=\"Delete = true; deleteStudent(remoteStudent);\">Да</button>\n    <button class=\"delete\"(click)=\"Delete = false; deleteStudent(remoteStudent); _checkShadow()\">Нет</button>\n  </div>\n</div>\n\n\n\n\n\n\n\n"
+module.exports = "<router-outlet></router-outlet>\n\n<h1>Список студентов</h1>\n\n<div class=\"FlexParents\">\n \n\n  <div class=\"flexContainer\">\n    \n    <div><b>Отл/Вкл выделение неуспевающих студентов:</b></div>\n    <button class=\"onOff\" (click)=\"toggleCheckAssessment()\">Отключить/Включить </button>\n    <div><b>Поиск студента по Имени и/или Фамилии:</b></div>\n    <input [(ngModel)]=\"fullName\" class=\"search\" type=\"text\" placeholder=\"Поиск студента\">\n    <div><b>Фильтрация по дню рождения:</b></div>\n    <input [(ngModel)]=\"dataInput\" class=\"calendar\" type=\"date\" >\n    <div><b>Фильтрация по среднему баллу:</b></div>\n    <input [(ngModel)]=\"Gpa\" class=\"gpa\" type=\"text\" placeholder=\"Введите средний балл:\">\n    <button class=\"onOff\" routerLink=\"/form/create\" >Добавить студента</button>\n    \n  </div>\n  \n  <div class=\"entity_table\">\n    <table class=\"flexy\">\n      <thead>\n        <tr class=\"tableParamsColor\"><th style=\"border-left: 2px solid rgb(161, 161, 161);\">№:</th><th>Фамилия:<button class=\"sort\" (click)=\"sortSurName()\"></button></th>\n          <th>Имя:<button class=\"sort\" (click)=\"sortName()\"></button></th><th>Отчество:<button class=\"sort\" (click)=\"sortPatr()\"></button></th>\n          <th>Дата рождения:<button class=\"sort\" (click)=\"sortBirh()\"></button></th><th>Возраст:</th><th>С/б:\n            <button class=\"sort\" (click)=\"sortAssessment()\"></button></th><th></th><th></th></tr>\n      </thead>\n\n      <tbody id=\"scroll_style\">\n        <tr class=\"width-tr\" *ngFor=\"let student of students; let i = index\" \n        [ngClass]=\"{'badGpa': CheckAssessment(student.gpa), 'foundName': searchFullName(i), 'hideStudents': filtrateBirthday(i),\n        'hideStudent': filtrateGpa(i), 'gray': !CheckAssessment(student.gpa) && !searchFullName(i) && !filtrateBirthday(i) && !filtrateGpa(i) && i%2===0}\"\n         appHighlightStudent [appEditSize]=\"'14px'\" >\n          <td class =\"border\"><b>{{i + 1}}</b></td>\n          <td><button [routerLink]=\"['view', student._id]\">{{student.lastName | titlecase | reductionFullname}}<br>\n          <div class=\"transliteFullName\" appTranslite >{{student.lastName | translite | titlecase | reductionFullname}}</div></button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.firstName | titlecase | reductionFullname}}<br>\n            <div class=\"transliteFullName\" appTranslite>{{student.firstName | translite | titlecase | reductionFullname}}</div></button></td>\n          <td><button [routerLink]=\"['view', student._id]\" >{{student.patronymic | titlecase | reductionFullname}}<br>\n            <div appTranslite>{{student.patronymic | translite | titlecase | reductionFullname}}</div></button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.birthDay | date}}</button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.birthDay | birthday}}</button></td>\n          <td><button  [routerLink]=\"['view', student._id]\">{{student.gpa | number: '1.0-1'}}</button></td>\n          <td><button  class=\"deleteStudents\" (click)=\"deleteStudent(student); _checkShadow()\"></button></td>\n          <td><button  class=\"editStudents\" [routerLink]=\"['/form/edit', student._id]\" ></button></td>\n        </tr>\n      </tbody>\n      \n    </table>\n    </div>\n    <div class=\"border\"></div>\n</div>\n\n<div [ngClass]=\"{'shadow-delete':checkShadow}\"></div>\n<div class=\"popup\" *ngIf=\"CheckDelete\"><p><b>Вы уверены, что хотите удалить информацию об ученике?</b></p>\n  <div class=\"containerDel\">\n    <button (click)=\"_checkShadow()\" [appDeleteStudent]=\"'Вы точно уверены?'\" [function] = \"deleteStudent(remoteStudent)\" [disabled]=\"Delete === 'true'\"\n    class=\"delete\"(click)=\"Delete = true; deleteStudent(remoteStudent);\">Да</button>\n    <button class=\"delete\"(click)=\"Delete = false; deleteStudent(remoteStudent); _checkShadow()\">Нет</button>\n  </div>\n</div>\n\n\n\n\n\n\n\n\n\n\n"
 
 /***/ }),
 
@@ -1408,11 +1387,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableComponent", function() { return TableComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _forma_Students__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forma/Students */ "./src/app/forma/Students.ts");
-/* harmony import */ var _forma_student_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../forma/student.service */ "./src/app/forma/student.service.ts");
-/* harmony import */ var _forma_delete_student_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../forma/delete-student.service */ "./src/app/forma/delete-student.service.ts");
-/* harmony import */ var _forma_add_student_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../forma/add-student.service */ "./src/app/forma/add-student.service.ts");
-
+/* harmony import */ var _forma_student_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forma/student.service */ "./src/app/forma/student.service.ts");
+/* harmony import */ var _forma_delete_student_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../forma/delete-student.service */ "./src/app/forma/delete-student.service.ts");
+/* harmony import */ var _forma_add_student_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../forma/add-student.service */ "./src/app/forma/add-student.service.ts");
 
 
 
@@ -1426,13 +1403,10 @@ var TableComponent = /** @class */ (function () {
         this.onCheckAssessment = true;
         this.fullName = '';
         this.CheckDelete = false;
-        this.student = new _forma_Students__WEBPACK_IMPORTED_MODULE_2__["Students"]();
         this.checkShadow = false;
+        this.getStudents();
     }
-    TableComponent.prototype.CheckData = function (years, month, day) {
-        this.data = new Date(years, month, day);
-        return this.data;
-    };
+    // Проверка на успеваемость(студент подсвечивается красным, если оценка < 3)
     TableComponent.prototype.CheckAssessment = function (assessment) {
         return assessment < 3 && this.onCheckAssessment;
     };
@@ -1440,9 +1414,7 @@ var TableComponent = /** @class */ (function () {
         this.onCheckAssessment = !this.onCheckAssessment;
         return this.onCheckAssessment;
     };
-    TableComponent.prototype._toggleCreateStudent = function () {
-        this.studentService.checkCreatForm = !this.studentService.checkCreatForm;
-    };
+    // Поиск студента по Имени и/или Фамилии
     TableComponent.prototype.searchFullName = function (i) {
         this.fullName = this.fullName.toLowerCase();
         this.arrFullName = this.fullName.toLowerCase().split(' ');
@@ -1462,12 +1434,7 @@ var TableComponent = /** @class */ (function () {
         }
         return false;
     };
-    TableComponent.prototype._checkIdStudent = function (id) {
-        this.studentService.checkId = id;
-    };
-    TableComponent.prototype._editStudent = function (i) {
-        this.id = i;
-    };
+    // Удаление студента
     TableComponent.prototype.deleteStudent = function (student) {
         var _this = this;
         this.remoteStudent = student;
@@ -1484,25 +1451,14 @@ var TableComponent = /** @class */ (function () {
             this.Delete = undefined;
         }
     };
-    // deleteStudent(i: number): void {
-    //   this.k = i;
-    //   this.CheckDelete = true;
-    //   if (this.Delete) {
-    //     this.students.splice(this.k, 1);
-    //     this.CheckDelete = false;
-    //     this.Delete = undefined;
-    //   }
-    //   if (this.Delete === false) {
-    //     this.CheckDelete = false;
-    //     this.Delete = undefined;
-    //   }
-    // }
+    // Сортировка по среднему баллу от меньшего к большему
     TableComponent.prototype.sortGpa = function (student1, student2) {
         return student1.gpa - student2.gpa;
     };
     TableComponent.prototype.sortAssessment = function () {
         this.students = this.students.sort(this.sortGpa);
     };
+    // Сортировка ФИО по алфавиту
     TableComponent.prototype.sortFirstName = function (student1, student2) {
         if (student1.firstName > student2.firstName) {
             return 1;
@@ -1539,6 +1495,7 @@ var TableComponent = /** @class */ (function () {
     TableComponent.prototype.sortPatr = function () {
         this.students = this.students.sort(this.sortPatronymic);
     };
+    // Сортировка по дате рождения, большего года, к меньшему
     TableComponent.prototype.sortBirthday = function (student1, student2) {
         var firstStudent = new Date(student1.birthDay);
         var secondStudent = new Date(student2.birthDay);
@@ -1547,6 +1504,7 @@ var TableComponent = /** @class */ (function () {
     TableComponent.prototype.sortBirh = function () {
         this.students = this.students.sort(this.sortBirthday);
     };
+    // Фильтрация по дате рождения (от указанной даты и раньше)
     TableComponent.prototype.filtrateBirthday = function (i) {
         var dateInput = new Date(this.dataInput);
         var dateStudent = new Date(this.students[i].birthDay);
@@ -1555,15 +1513,17 @@ var TableComponent = /** @class */ (function () {
         }
         return false;
     };
-    TableComponent.prototype._checkShadow = function () {
-        this.checkShadow = !this.checkShadow;
-        return this.checkShadow;
-    };
+    // Фильрация по среднему баллу ( от указанного и больше)
     TableComponent.prototype.filtrateGpa = function (i) {
         if (this.students[i].gpa < (+this.Gpa)) {
             return true;
         }
         return false;
+    };
+    // Появление затемнения при popup
+    TableComponent.prototype._checkShadow = function () {
+        this.checkShadow = !this.checkShadow;
+        return this.checkShadow;
     };
     TableComponent.prototype.getStudents = function () {
         var _this = this;
@@ -1580,8 +1540,8 @@ var TableComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./table.component.html */ "./src/app/table/table.component.html"),
             styles: [__webpack_require__(/*! ./table.component.css */ "./src/app/table/table.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_forma_student_service__WEBPACK_IMPORTED_MODULE_3__["StudentService"], _forma_delete_student_service__WEBPACK_IMPORTED_MODULE_4__["DeleteStudentService"],
-            _forma_add_student_service__WEBPACK_IMPORTED_MODULE_5__["AddStudentService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_forma_student_service__WEBPACK_IMPORTED_MODULE_2__["StudentService"], _forma_delete_student_service__WEBPACK_IMPORTED_MODULE_3__["DeleteStudentService"],
+            _forma_add_student_service__WEBPACK_IMPORTED_MODULE_4__["AddStudentService"]])
     ], TableComponent);
     return TableComponent;
 }());
@@ -1628,8 +1588,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _forma_student_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../forma/student.service */ "./src/app/forma/student.service.ts");
 /* harmony import */ var _forma_Students__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../forma/Students */ "./src/app/forma/Students.ts");
 /* harmony import */ var _forma_info_about_student_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../forma/info-about-student.service */ "./src/app/forma/info-about-student.service.ts");
-/* harmony import */ var _forma_add_student_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../forma/add-student.service */ "./src/app/forma/add-student.service.ts");
-
 
 
 
@@ -1637,21 +1595,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ViewStudentComponent = /** @class */ (function () {
-    function ViewStudentComponent(studentService, activateRoute, infoAboutStudentService, addStudentService) {
+    function ViewStudentComponent(studentService, activateRoute, infoAboutStudentService) {
         var _this = this;
         this.studentService = studentService;
         this.activateRoute = activateRoute;
         this.infoAboutStudentService = infoAboutStudentService;
-        this.addStudentService = addStudentService;
         this.student = new _forma_Students__WEBPACK_IMPORTED_MODULE_4__["Students"]();
         this.subscription = this.activateRoute.params.subscribe(function (params) { return _this.id = params['id']; });
     }
-    ViewStudentComponent.prototype.getStudents = function () {
-        var _this = this;
-        return this.addStudentService.getStudents().subscribe(function (data) {
-            return _this.studentService.student = data;
-        });
-    };
     ViewStudentComponent.prototype.InfoAboutStudentService = function (id) {
         var _this = this;
         this.infoAboutStudentService.infoAboutStudent(id).subscribe(function (student) {
@@ -1669,8 +1620,7 @@ var ViewStudentComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./view-student.component.css */ "./src/app/view-student/view-student.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_forma_student_service__WEBPACK_IMPORTED_MODULE_3__["StudentService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _forma_info_about_student_service__WEBPACK_IMPORTED_MODULE_5__["InfoAboutStudentService"],
-            _forma_add_student_service__WEBPACK_IMPORTED_MODULE_6__["AddStudentService"]])
+            _forma_info_about_student_service__WEBPACK_IMPORTED_MODULE_5__["InfoAboutStudentService"]])
     ], ViewStudentComponent);
     return ViewStudentComponent;
 }());
