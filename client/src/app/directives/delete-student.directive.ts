@@ -6,6 +6,7 @@ import { Directive, Input, HostListener } from '@angular/core';
 export class DeleteStudentDirective {
 
   constructor() { }
+// Директива для подтверждения удаления студента
 
   @Input('appDeleteStudent') message = 'Вы точно уверены?';
   @Input() function;

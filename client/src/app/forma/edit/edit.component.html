@@ -11,7 +11,8 @@
               <p>
                 Фамилия:
               </p>
-              <input id="lastName" name="lastName" type="text" formControlName="lastName" (input)="editStudent.lastName=$event.target.value"[value]="editStudent.lastName || ''" required  >
+              <input id="lastName" name="lastName" type="text" formControlName="lastName" 
+              (input)="editStudent.lastName=$event.target.value"[value]="editStudent.lastName || ''" required  >
               <!-- <span *ngIf="lastName.invalid && lastName.errors.required">
                 фамилия is required.
               </span>
@@ -24,14 +25,16 @@
               <p>
                 Имя:
               </p>
-              <input id="firstName" name="firstName" type="text" formControlName="firstName" (input)="editStudent.firstName=$event.target.value"[value]="editStudent.firstName || ''">
+              <input id="firstName" name="firstName" type="text" formControlName="firstName" 
+              (input)="editStudent.firstName=$event.target.value"[value]="editStudent.firstName || ''">
             </div>
           
             <div class="form-control">
             <p>
               Отчество:
             </p>
-            <input id="patronymic" name="patronymic" type="text" formControlName="patronymic" (input)="editStudent.patronymic=$event.target.value"[value]="editStudent.patronymic || ''">
+            <input id="patronymic" name="patronymic" type="text" formControlName="patronymic" 
+            (input)="editStudent.patronymic=$event.target.value"[value]="editStudent.patronymic || ''">
             </div>
             
           </div>
@@ -40,7 +43,8 @@
             <p>
               Дата рождения:
             </p>
-            <input id="birthDay" name="birthDay" type="date" formControlName="birthDay" (input)="editStudent.birthDay=$event.target.value"[value]="editStudent.birthDay || ''">
+            <input id="birthDay" name="birthDay" type="date" formControlName="birthDay" 
+            (input)="editStudent.birthDay=$event.target.value"[value]="editStudent.birthDay || ''">
             
           </div>
     
@@ -48,7 +52,8 @@
             <p>
               Средний балл:
             </p>
-              <input id="gpa" name="gpa" type="text" formControlName="gpa" (input)="editStudent.gpa=$event.target.value"[value]="editStudent.gpa || ''">
+              <input id="gpa" name="gpa" type="text" formControlName="gpa" 
+              (input)="editStudent.gpa=$event.target.value"[value]="editStudent.gpa || ''">
 
               <!-- <div *ngIf="editStudent.gpa.invalid && (editStudent.gpa.dirty || editStudent.gpa.touched)">
 

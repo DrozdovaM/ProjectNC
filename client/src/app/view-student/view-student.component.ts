@@ -4,7 +4,6 @@ import { StudentService } from '../forma/student.service';
 import {Subscription} from 'rxjs';
 import { Students } from '../forma/Students';
 import { InfoAboutStudentService } from '../forma/info-about-student.service';
-import { AddStudentService } from '../forma/add-student.service';
 
 @Component({
   selector: 'app-view-student',
@@ -14,28 +13,17 @@ import { AddStudentService } from '../forma/add-student.service';
 export class ViewStudentComponent implements OnInit {
 
 
+  // Информация о студенте, по id
+
   id: number;
   student: Students = new Students();
-
-  // lastName = this.studentService.student[this.id - 1].lastName;
-  // firstName = this.studentService.student[this.id - 1].firstName;
-  // patronymic = this.studentService.student[this.id - 1].patronymic;
-  // birthDay = this.studentService.student[this.id - 1].birthDay;
-  // gpa = this.studentService.student[this.id - 1].gpa;
 
   private subscription: Subscription;
 
   constructor( private studentService: StudentService, private activateRoute: ActivatedRoute,
-               private infoAboutStudentService: InfoAboutStudentService,
-               private addStudentService: AddStudentService) {
+               private infoAboutStudentService: InfoAboutStudentService) {
     this.subscription = this.activateRoute.params.subscribe(params => this.id = params['id']);
 
-  }
-
-  getStudents() {
-    return this.addStudentService.getStudents().subscribe((data: Students[]) => {
-      return this.studentService.student = data;
-    });
   }
 
   InfoAboutStudentService(id) {
@@ -47,9 +35,6 @@ export class ViewStudentComponent implements OnInit {
 
   ngOnInit() {
      this.InfoAboutStudentService(this.id);
-
-
-
   }
 
 }

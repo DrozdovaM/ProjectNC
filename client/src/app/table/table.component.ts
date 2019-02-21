@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, KeyValueDiffers, KeyValueDiffer, DoCheck, IterableDiffers,
-   ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Students } from '../forma/Students';
 import { StudentService } from '../forma/student.service';
 import { DeleteStudentService } from '../forma/delete-student.service';
@@ -11,7 +10,6 @@ import { AddStudentService } from '../forma/add-student.service';
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit {
 
@@ -23,19 +21,9 @@ export class TableComponent implements OnInit {
   CheckDelete = false;
   Delete: boolean;
 
-  size: string;
-
-  data: Date;
-
   dataInput: string;
 
-  OnFiltration: false;
-
   Gpa: string;
-
-  id: number;
-
-  student: Students = new Students();
 
   students: Students[];
 
@@ -43,12 +31,7 @@ export class TableComponent implements OnInit {
 
   checkShadow = false;
 
-
-  CheckData( years: number, month: number, day: number): Date {
-    this.data = new Date(years, month, day);
-    return this.data;
-  }
-
+  // Проверка на успеваемость(студент подсвечивается красным, если оценка < 3)
   CheckAssessment(assessment: number): boolean {
 
     return assessment < 3 && this.onCheckAssessment;
@@ -61,14 +44,7 @@ export class TableComponent implements OnInit {
 
   }
 
-
-  _toggleCreateStudent() {
-
-    this.studentService.checkCreatForm = !this.studentService.checkCreatForm;
-
-
-  }
-
+  // Поиск студента по Имени и/или Фамилии
   searchFullName(i: number): boolean {
 
     this.fullName = this.fullName.toLowerCase();
@@ -105,15 +81,8 @@ export class TableComponent implements OnInit {
 
   }
 
-  _checkIdStudent(id: number) {
-    this.studentService.checkId = id;
-  }
 
-  _editStudent(i: number) {
-    this.id = i;
-  }
-
-
+  // Удаление студента
   deleteStudent(student: Students) {
     this.remoteStudent = student;
     this.CheckDelete = true;
@@ -134,26 +103,7 @@ export class TableComponent implements OnInit {
 
   }
 
-  // deleteStudent(i: number): void {
-
-  //   this.k = i;
-
-  //   this.CheckDelete = true;
-  //   if (this.Delete) {
-
-
-  //     this.students.splice(this.k, 1);
-  //     this.CheckDelete = false;
-  //     this.Delete = undefined;
-  //   }
-  //   if (this.Delete === false) {
-
-  //     this.CheckDelete = false;
-  //     this.Delete = undefined;
-
-  //   }
-  // }
-
+  // Сортировка по среднему баллу от меньшего к большему
   sortGpa(student1: Students, student2: Students ): number {
     return student1.gpa - student2.gpa;
   }
@@ -162,6 +112,7 @@ export class TableComponent implements OnInit {
     this.students = this.students.sort(this.sortGpa);
   }
 
+  // Сортировка ФИО по алфавиту
   sortFirstName(student1: Students, student2: Students): number {
     if (student1.firstName > student2.firstName) {
       return 1;
@@ -205,6 +156,7 @@ export class TableComponent implements OnInit {
   }
 
 
+  // Сортировка по дате рождения, большего года, к меньшему
   sortBirthday(student1: Students, student2: Students): number {
     const firstStudent: any = new Date(student1.birthDay);
     const secondStudent: any = new Date(student2.birthDay);
@@ -216,6 +168,7 @@ export class TableComponent implements OnInit {
     this.students = this.students.sort(this.sortBirthday);
   }
 
+  // Фильтрация по дате рождения (от указанной даты и раньше)
   filtrateBirthday(i: number): boolean {
 
     const dateInput = new Date(this.dataInput);
@@ -228,12 +181,7 @@ export class TableComponent implements OnInit {
     return false;
   }
 
-
-  _checkShadow(): boolean {
-    this.checkShadow = !this.checkShadow;
-    return this.checkShadow;
-  }
-
+  // Фильрация по среднему баллу ( от указанного и больше)
   filtrateGpa(i: number): boolean {
 
     if (this.students[i].gpa < (+this.Gpa)) {
@@ -242,6 +190,12 @@ export class TableComponent implements OnInit {
     }
     return false;
 
+  }
+
+// Появление затемнения при popup
+  _checkShadow(): boolean {
+    this.checkShadow = !this.checkShadow;
+    return this.checkShadow;
   }
 
   getStudents() {
@@ -253,42 +207,11 @@ export class TableComponent implements OnInit {
 
   constructor(private studentService: StudentService, private deleteStudentService: DeleteStudentService,
      private addStudentService: AddStudentService) {
-
+      this.getStudents() ;
   }
-
 
   ngOnInit() {
     this.getStudents() ;
   }
 
-
-  // ngDoCheck() {
-
-    // if (this.studentService.updateStudents === 0) {
-
-    //   // this.students[this.students.length].lastName = this.studentService.student[this.studentService.student.length - 1].lastName;
-    //   // this.students[this.students.length].firstName = this.studentService.student[this.studentService.student.length - 1].firstName;
-    //   // this.students[this.students.length].patronymic = this.studentService.student[this.studentService.student.length - 1].patronymic;
-    //   // this.students[this.students.length].birthDay = this.studentService.student[this.studentService.student.length - 1].birthDay;
-    //   // this.students[this.students.length].gpa = this.studentService.student[this.studentService.student.length - 1].gpa;
-    //   console.log(this.students);
-
-    //   this.students = this.studentService.getStudents();
-    //   return this.students;
-    // }
-
-
-    // const changes = this.iterableDiffer.diff(this.studentService.student);
-    // console.log(changes);
-    // if (changes) {
-    //   console.log('Changes detected!');
-    // }
-
-    //   console.log('a');
-    // if (this.differ.diff(this.studentService.student[this.studentService.student.length]) != null) {
-    //   console.log('b');
-    //   this.students = this.studentService.getStudents();
-    //   console.log(this.students);
-
-    // }
 }

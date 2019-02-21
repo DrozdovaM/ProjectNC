@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors} from '@angular/forms';
 import { Students } from '../Students';
 import { StudentService } from '../student.service';
@@ -13,7 +13,6 @@ import { InfoAboutStudentService } from '../info-about-student.service';
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditComponent implements OnInit {
 
@@ -26,21 +25,19 @@ export class EditComponent implements OnInit {
   studentFullInfo = new FormGroup( {
 
     fullName: new FormGroup( {
-      lastName: new FormControl(this.editStudent.lastName, [
+      lastName: new FormControl('', [
         Validators.required, Validators.pattern('^[А-Яа-яЁё\s]+$'),  ]),
-      firstName: new FormControl(this.editStudent.firstName, [
+      firstName: new FormControl('', [
         Validators.required, Validators.pattern('^[А-Яа-яЁё\s]+$') ]),
-      patronymic: new FormControl(this.editStudent.patronymic, [
+      patronymic: new FormControl('', [
         Validators.required, Validators.pattern('^[А-Яа-яЁё\s]+$') ,  ])
     }, {validators: this.checkFullName}),
-    birthDay: new FormControl(this.editStudent.birthDay,  [
+    birthDay: new FormControl('',  [
       Validators.required, this.birtdayValidation]),
-    gpa: new FormControl(this.editStudent.gpa, [
+    gpa: new FormControl('', [
       Validators.required, Validators.pattern('^[1-5]*[.,]?[0-9]+$') ])
 
   });
-
-  toggleEditForm = true;
 
   checkFullName(control: FormGroup): ValidationErrors | null {
 
@@ -73,8 +70,7 @@ export class EditComponent implements OnInit {
   onSubmit() {
 
     this._editStudent(this.editStudent);
-    console.log(this.studentService.id);
-    // this.updateStudentForm(this.id - 1);
+    this.getStudents();
     this.router.navigate(['']);
   }
 
@@ -89,6 +85,7 @@ export class EditComponent implements OnInit {
 
    }
 
+   // Отображение в форме, редактируемого студента
    editForm(id) {
 
     this.infoAboutStudentService.infoAboutStudent(id).subscribe((student: Students ) => {
@@ -98,21 +95,14 @@ export class EditComponent implements OnInit {
 
   }
 
-
-  updateStudentForm(i: number) {
-
-    this.studentService.student[i] = this.editStudent;
-
-    return this.studentService.student;
-  }
-
-
+// Редактирование студента
   _editStudent(student: Students) {
     this.editStudentService.editStudent(student).subscribe(() => {
       console.log(student);
       this.getStudents();
     });
   }
+
 
   getStudents() {
     return this.addStudentService.getStudents().subscribe((data: Students[]) => {
@@ -122,7 +112,7 @@ export class EditComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.id);
+    // console.log(this.id);
     this.editForm(this.id);
   }
 

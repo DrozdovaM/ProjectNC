@@ -7,6 +7,8 @@ export class HighlightStudentDirective {
 
   constructor() { }
 
+  // Директива для изменения цвета и типа шрифта при наведении курсора
+
   private color = 'black';
   private fontWeight = 'normal';
 

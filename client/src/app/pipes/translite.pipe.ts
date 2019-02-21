@@ -7,6 +7,8 @@ export class TranslitePipe implements PipeTransform {
 
   transform(value: string): string {
 
+    // Преобразование русского слова в английское
+
     const arr = value.split('');
 
     for (let i = 0; i <= arr.length; i++ ) {

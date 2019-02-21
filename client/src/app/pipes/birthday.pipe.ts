@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BirthdayPipe implements PipeTransform {
 
-  transform(value: Date, args?: any): number {
+  transform(value: Date): number {
 
+    // Подсчет возраста.
     const today: any = new Date();
     const birthDay: any = new Date(value);
     const diff = today - birthDay;

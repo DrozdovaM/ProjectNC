@@ -9,8 +9,4 @@ export class Students {
     birthDay: string;
     gpa: number;
 
-    // // constructor(public lastName: string, public firstName: string ,
-    // public patronymic: string, public birthDay: string, public gpa: number) {
-
-    // // }
 }

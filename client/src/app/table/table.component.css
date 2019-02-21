@@ -17,16 +17,17 @@ a {
 .FlexParents{
     display: flex;
     margin: 0 auto;
-    justify-content: space-around; 
+    justify-content: space-between; 
 
 }
 .flexContainer {
     
     margin: 0px;
-    align-self: flex-start;
+    align-content: flex-start;
     flex-direction: column;
     flex: 0 4 120px;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
 
 }
 .onOff {
@@ -55,8 +56,6 @@ a {
 }
 
 
-
-
 .sort:before {
     content: "\2193";
 }
@@ -76,32 +75,42 @@ a {
     /* position: absolute; */ 
 }
 
-.flexy {
-    
+.entity_table {
+    /* display: flex; */
+    /* flex: 0 1 1000px; */
+    /* justify-content: center;
+    justify-self: center;
+    align-self: center; */
+}
+
+.border {
+
+}
+
+.flexy {    
     max-width: 100%;
     border: 1px solid #eee;
-    max-height: 400px;
-    
-    
+    max-height: 400px; 
+       
 }
 
 
-#style-15::-webkit-scrollbar-track
+#scroll_style::-webkit-scrollbar-track
 {
 	background-color: #F5F5F5;
 	border-radius: 10px;
 }
-#style-15::-webkit-scrollbar-track:hover {
+#scroll_style::-webkit-scrollbar-track:hover {
     background-color: rgb(215, 218, 219);
 }
 
-#style-15::-webkit-scrollbar
+#scroll_style::-webkit-scrollbar
 {
 	width: 10px;
 	background-color: #F5F5F5;
 }
 
-#style-15::-webkit-scrollbar-thumb
+#scroll_style::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	background-color: #FFF;
@@ -161,7 +170,6 @@ table {
     border-radius: 10px;
     border-spacing: 0px;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-    /* table-layout: fixed;  */
     
 }
 
@@ -171,14 +179,10 @@ table th:nth-child(3), td:nth-child(3) { min-width: 100px; max-width: 100px; }
 table th:nth-child(4), td:nth-child(4) { min-width: 100px; max-width: 100px; }
 table th:nth-child(5), td:nth-child(5) { min-width: 100px;  max-width: 100px; }
 table th:nth-child(6), td:nth-child(6) { min-width: 100px; max-width: 100px; }
-table th:nth-child(7), td:nth-child(7) { min-width: 100px; max-width: 100px; }
+table th:nth-child(7), td:nth-child(7) { min-width: 60px; max-width: 60px; }
 table th:nth-child(8), td:nth-child(8) { min-width: 40px; max-width: 40px; }
 table th:nth-child(9), td:nth-child(9) { min-width: 40px; max-width: 40px; }
 
-.table {
-    flex: 0 1 985px;
-    align-items: center;
-}
 
 .borders {
     border-left: 2px solid rgb(161, 161, 161);
@@ -198,7 +202,8 @@ table th:nth-child(9), td:nth-child(9) { min-width: 40px; max-width: 40px; }
 }
 
 .popup {
-    position: absolute;
+
+    position: fixed;
     width: 300px;
     background: white;
     border: 6px double rgb(161, 161, 161);

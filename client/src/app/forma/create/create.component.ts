@@ -1,25 +1,20 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors} from '@angular/forms';
 import { Students } from '../Students';
 import { StudentService } from '../student.service';
-import { ActivatedRoute} from '@angular/router';
 import { AddStudentService } from '../add-student.service';
 import { Router} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent implements OnInit {
 
 
   newStudent: Students = new Students();
-
-  submitted = false;
 
   studentFullInfo = new FormGroup( {
 
@@ -86,6 +81,8 @@ export class CreateComponent implements OnInit {
     });
   }
 
+
+
   _exit() {
     this.router.navigate(['']);
   }
@@ -93,7 +90,6 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.studentService.updateStudents);
     this.addStudent(this.newStudent);
     this.getStudents();
     this.router.navigate(['']);

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Renderer2, OnInit, HostBinding } from '@angular/core';
+import { Directive, ElementRef, HostListener, Renderer2, OnInit, } from '@angular/core';
 
 @Directive({
   selector: '[appTranslite]'
@@ -7,9 +7,8 @@ export class TransliteDirective implements OnInit {
 
   constructor(private element: ElementRef, private renderer: Renderer2) { }
 
-  // @HostBinding('style.display') get getDisplay() {
-  //   return this.display;
-  // }
+  // При наведении курсора, элемент становится непрозрачным
+
 
   @HostListener('mouseleave') onMouseLeave() {
 

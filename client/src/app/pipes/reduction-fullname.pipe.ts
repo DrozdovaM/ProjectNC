@@ -6,6 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ReductionFullnamePipe implements PipeTransform {
 
   transform(value: string): any {
+    // Проверка на кол-во символов в слове, если 11 и больше,  то добавляется ...
     const arr = value.split('');
 
     if ( arr.length >= 11 ) {
